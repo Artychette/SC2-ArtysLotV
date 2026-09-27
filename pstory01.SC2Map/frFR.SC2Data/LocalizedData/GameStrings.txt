@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Auteur inconnu
+DocInfo/Name=Histoire de Void
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Joueur 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Armée visitée : ~A~
+Param/Value/26F13D15=Évènement de pièce invalide dans PS_EventUIBottomBarClicked
+Param/Value/910E1E27=Bientôt™ disponible !
+UserData/Scenes/Alpha02_Description=Artanis est sur le point d’envoyer un escadron d’élite pour récupérer l’artéfact, puis attaquer l’Escadron alpha. Ses hommes demandent ce qu’ils doivent faire. Alarak dit de tous les tuer. Mohandar n’est pas d’accord, mais Artanis (et le joueur) refusent de laisser vivre ces malandrins. L’heure de la vengeance et de la riposte a sonné. Bien que le Dae’uhl interdise l’incinération de mondes sans une cause impérieuse et que le casse-planète soit une arme de la Lance d’Adun, de telles considérations ne s’appliquent pas à Amon.
+UserData/Scenes/Alpha02_Name=Avant Alpha02
+UserData/Timestamps/Purifier02Arrival_Description=Vaisseau des purificateurs
+UserData/Timestamps/Purifier02Arrival_Title=CYBROS
+UserData/Timestamps/UlnarArrival_Title=ENDROIT INCONNU

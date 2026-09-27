@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Autor Desconhecido /// Unknown Author
+DocInfo/Name=História do Void /// Void Story
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Jogador 2 /// Player 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c> /// <c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Visita de exército: ~A~ /// Army visited: ~A~
+Param/Value/26F13D15=Evento de sala inválido em PS_EventUIBottomBarClicked /// Invalid room event in PS_EventUIBottomBarClicked
+Param/Value/910E1E27=Em breve(TM)! /// Coming Soon(TM)!
+UserData/Scenes/Alpha02_Description=Artanis vai mandar um esquadrão de elite para retomar o artefato e então atacará o Esquadrão Alfa. Eles querem saber o que deve ser feito. Alarak diz que eles devem matar todos. Mohandar discorda. Mas Artanis (e o jogador) não permitirão que esse mal perdure. Chegou a hora do troco, a hora da retaliação. Apesar do Dae'uhl proibir a incineração de mundos sem grandes motivos e a arma ser a Lança de Adun, o Dae'hul não se aplica a Amon.
+UserData/Scenes/Alpha02_Name=Before Alpha02 /// Before Alpha02
+UserData/Timestamps/Purifier02Arrival_Description=Embarcação Purificadora /// Purifier Vessel
+UserData/Timestamps/Purifier02Arrival_Title=CYBROS /// CYBROS
+UserData/Timestamps/UlnarArrival_Title=LOCAL DESCONHECIDO /// UNKNOWN LOCATION

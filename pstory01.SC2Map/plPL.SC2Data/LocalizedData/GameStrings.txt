@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Nieznany autor
+DocInfo/Name=Opowieść Void
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Gracz 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Armia poddana inspekcji: ~A~
+Param/Value/26F13D15=Nieprawidłowe wydarzenie w pomieszczeniu dla PS_EventUIBottomBarClicked
+Param/Value/910E1E27=Już wkrótce (TM)!
+UserData/Scenes/Alpha02_Description=Artanis zamierza wysłać elitarny oddział do odzyskania artefaktu i zaatakowania Szwadronu Alfa. Alarak chce śmierci wszystkich, a Mohandar się nie zgadza. Ale Artanis (i gracz) nie zamierzają dłużej czekać bezczynnie, gdy panoszy się zło. Nadeszła pora zemsty – trzeba ukarać winnych. Choć Dae'uhl zakazuje palenia całych światów bez niezwykle ważnego powodu, to prawo to nie odnosi się do Amona.
+UserData/Scenes/Alpha02_Name=Przed Alfa02
+UserData/Timestamps/Purifier02Arrival_Description=Okręt czyścicieli
+UserData/Timestamps/Purifier02Arrival_Title=CYBROS
+UserData/Timestamps/UlnarArrival_Title=NIEZNANE MIEJSCE

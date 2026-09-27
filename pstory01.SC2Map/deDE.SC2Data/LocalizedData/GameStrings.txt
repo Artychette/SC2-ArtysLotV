@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Unbekannter Autor
+DocInfo/Name=Void-Kampagne
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Spieler 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Truppen inspiziert: ~A~
+Param/Value/26F13D15=Invalid room event in PS_EventUIBottomBarClicked
+Param/Value/910E1E27=In Kürze(TM)!
+UserData/Scenes/Alpha02_Description=Artanis wird einen Elitetrupp auf die Planetenoberfläche schicken, um das Artefakt sicherzustellen und dann das Moebius-Corps anzugreifen. Er wird nicht zulassen, dass dieses Übel weiter walten darf. Die Zeit für Vergeltung ist gekommen. Obwohl ihr heiliges Gesetz, die Dae'Uhl, die Auslöschung von Welten ohne gewichtigen Grund verbietet, trifft dieses Gesetz nicht auf Amon zu und die Verseuchung dringt schon zu tief.
+UserData/Scenes/Alpha02_Name=Vor Alpha02
+UserData/Timestamps/Purifier02Arrival_Description=Richter-Schiff
+UserData/Timestamps/Purifier02Arrival_Title=CYBROS
+UserData/Timestamps/UlnarArrival_Title=UNBEKANNTER ORT

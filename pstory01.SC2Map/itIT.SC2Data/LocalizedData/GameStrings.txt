@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Autore sconosciuto
+DocInfo/Name=Storia di Void
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Giocatore 3
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Armata presente in: ~A~
+Param/Value/26F13D15=Evento stanza non valido in PS_EventUIBottomBarClicked
+Param/Value/910E1E27=Coming Soon(TM)!
+UserData/Scenes/Alpha02_Description=Artanis sta per inviare una squadra per recuperare l'artefatto, e per attaccare la Squadriglia Alfa. Si chiedono che cosa fare. Alarak è dell'opinione di uccidere tutti. Mohandar non è d'accordo. Artanis non consentirà il perpetrarsi di questo male. È giunto il momento della vendetta. La Dae'Uhl impedisce la distruzione di mondi senza una giusta causa, ma la Dae'Uhl non si applica ad Amon.
+UserData/Scenes/Alpha02_Name=Prima di Alpha02
+UserData/Timestamps/Purifier02Arrival_Description=Vascello dei Purificatori
+UserData/Timestamps/Purifier02Arrival_Title=CYBROS
+UserData/Timestamps/UlnarArrival_Title=POSIZIONE SCONOSCIUTA

@@ -1,0 +1,15 @@
+﻿DocInfo/Author=알 수 없는 제작자
+DocInfo/Name=공허 이야기
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=플레이어 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=방문한 부대: ~A~
+Param/Value/26F13D15=PS_EventUIBottomBarClicked에서 유효하지 않은 실내 이벤트
+Param/Value/910E1E27=곧 출시(TM)!
+UserData/Scenes/Alpha02_Description=아르타니스는 정예 분대를 보내 유물을 탈환하고 알파 분대를 공격하려 한다. 이들은 해야 할 일에 의문을 제기했다. 알라라크는 이들을 모두 처치해야 한다고 주장한다. 하지만 모한다르는 이 계획에 반대한다. 아르타니스는 이러한 악을 내버려 두지 않으려 한다. 마침내 복수의 시간이 찾아왔다. 대울의 규율은 대의명분 없이 행성을 파괴하는 행위를 금지하지만, 이것은 아둔의 창에 장착된 무기이고 아몬에는 대울이 적용되지 않는다.
+UserData/Scenes/Alpha02_Name=Alpha02 전
+UserData/Timestamps/Purifier02Arrival_Description=정화자 함선
+UserData/Timestamps/Purifier02Arrival_Title=사이브로스
+UserData/Timestamps/UlnarArrival_Title=미지의 장소

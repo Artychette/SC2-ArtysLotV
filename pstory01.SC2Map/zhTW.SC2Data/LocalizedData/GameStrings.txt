@@ -1,0 +1,15 @@
+﻿DocInfo/Author=未知製作者
+DocInfo/Name=「虛空之遺」劇情
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=玩家2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=造訪過的部隊：~A~
+Param/Value/26F13D15=無效的艙房事件PS_EventUIBottomBarClicked
+Param/Value/910E1E27=敬請期待（TM）！
+UserData/Scenes/Alpha02_Description=亞坦尼斯打算派遣一支中隊奪回神器，並突襲阿爾發中隊。眾人對這項計畫議論紛紛。亞拉瑞克認為應該殺死所有人，莫翰達則反對這麼做。但亞坦尼斯（以及玩家）決定不再放過這股邪惡力量。反擊的時刻到了，該讓惡行得到應有的惡果。儘管達奧律法明定，除非有偉大的理由，否則禁止毀滅星球，更何況這又是亞頓之矛的武器。不過，亞蒙可不適用於達奧的規範。
+UserData/Scenes/Alpha02_Name=在阿爾發02之前
+UserData/Timestamps/Purifier02Arrival_Description=淨化者戰艦
+UserData/Timestamps/Purifier02Arrival_Title=賽博洛斯
+UserData/Timestamps/UlnarArrival_Title=未知的地點

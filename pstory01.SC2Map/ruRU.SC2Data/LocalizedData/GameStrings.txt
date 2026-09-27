@@ -1,0 +1,15 @@
+﻿DocInfo/Author=Неизвестный автор
+DocInfo/Name=Сюжет Void
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=Игрок 2
+MapInfo/Player03/Name=
+Param/Expression/35E7C92D=<c val="FFFF00">~A~</c>
+Param/Expression/AE9FE1F9=Армий посещено: ~A~
+Param/Value/26F13D15=Неправильное событие помещения в PS_EventUIBottomBarClicked
+Param/Value/910E1E27=Скоро(TM)!
+UserData/Scenes/Alpha02_Description=Артанис собирается послать ударный отряд на захват артефакта, а затем напасть на отряд Альфа. Они ставят под сомнение приказы. Аларак говорит, что всех их ждет смерть. Моэндар не согласен. Но Артанис (и игрок) не могут терпеть это бесчинство. Пришло время нанести ответный удар, время мести. Уничтожить целую планету может только «Копье Адуна». Принцип Дай-Ул запрещает делать это без великой цели — но этот принцип неприменим к Амуну.
+UserData/Scenes/Alpha02_Name=До Alpha02
+UserData/Timestamps/Purifier02Arrival_Description=Судно чистильщиков
+UserData/Timestamps/Purifier02Arrival_Title=КИБРОС
+UserData/Timestamps/UlnarArrival_Title=МЕСТОНАХОЖДЕНИЕ НЕИЗВЕСТНО
