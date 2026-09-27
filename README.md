@@ -6,7 +6,7 @@ If you find something is off, by all mean, yell at me.
 
 ## Notes on Copyright License
 
-Blizzard stance on mod's intellectual property is very vague, hence it is not clear if mods are Blizzard's or the modder's property. For this reason, no copyright license are provided but for all intent and purposes consider this under the GNU-GPL3 license
+Blizzard stance on mod's intellectual property is very vague, hence it is not clear if mods are Blizzard's or the modder's property. For this reason, no copyright license are provided but for all intent and purposes consider this under a copyleft license
 
 ## Manual hook 
 If need be (say you already have several mission finished) you can hook the mod to your campaign without much trouble :
