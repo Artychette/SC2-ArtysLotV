@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AIData>
+    <Definition Id="04DD8B1F" Color="4">
+        <SourcePlayer Value="2"/>
+        <TargetPlayer Value="1"/>
+        <GatherDefault Id="19"/>
+        <RepeatWaves Value="3"/>
+        <Step Type="Wave" Id="1">
+            <Unit Type="Zergling">
+                <Count DiffLevel="1" Value="6"/>
+                <Count DiffLevel="2" Value="6"/>
+                <Count DiffLevel="3" Value="6"/>
+                <Count DiffLevel="4" Value="6"/>
+                <Count DiffLevel="5" Value="6"/>
+                <Count DiffLevel="6" Value="6"/>
+                <Count DiffLevel="7" Value="6"/>
+                <Count DiffLevel="8" Value="6"/>
+                <Count DiffLevel="9" Value="6"/>
+                <Count DiffLevel="10" Value="6"/>
+            </Unit>
+            <Time Type="Arrival">
+                <Duration DiffLevel="1" Value="90"/>
+                <Duration DiffLevel="2" Value="90"/>
+                <Duration DiffLevel="3" Value="90"/>
+                <Duration DiffLevel="4" Value="90"/>
+                <Duration DiffLevel="5" Value="90"/>
+                <Duration DiffLevel="6" Value="90"/>
+                <Duration DiffLevel="7" Value="90"/>
+                <Duration DiffLevel="8" Value="90"/>
+                <Duration DiffLevel="9" Value="90"/>
+                <Duration DiffLevel="10" Value="90"/>
+            </Time>
+        </Step>
+        <Step Type="Link" Id="1"/>
+        <Step Type="Wave" Id="2">
+            <CreateUnits/>
+            <NoWait/>
+            <Unit Type="HybridDominator">
+                <Count DiffLevel="1" Value="1"/>
+                <Count DiffLevel="2" Value="1"/>
+                <Count DiffLevel="3" Value="1"/>
+                <Count DiffLevel="4" Value="1"/>
+                <Count DiffLevel="5" Value="1"/>
+                <Count DiffLevel="6" Value="1"/>
+                <Count DiffLevel="7" Value="1"/>
+                <Count DiffLevel="8" Value="1"/>
+                <Count DiffLevel="9" Value="1"/>
+                <Count DiffLevel="10" Value="1"/>
+            </Unit>
+            <Time Type="Arrival">
+                <Duration DiffLevel="1" Value="90"/>
+                <Duration DiffLevel="2" Value="90"/>
+                <Duration DiffLevel="3" Value="90"/>
+                <Duration DiffLevel="4" Value="90"/>
+                <Duration DiffLevel="5" Value="90"/>
+                <Duration DiffLevel="6" Value="90"/>
+                <Duration DiffLevel="7" Value="90"/>
+                <Duration DiffLevel="8" Value="90"/>
+                <Duration DiffLevel="9" Value="90"/>
+                <Duration DiffLevel="10" Value="90"/>
+            </Time>
+        </Step>
+        <Step Type="Wave" Id="3">
+            <Unit Type="Zergling">
+                <Count DiffLevel="1" Value="6"/>
+                <Count DiffLevel="2" Value="6"/>
+                <Count DiffLevel="3" Value="6"/>
+                <Count DiffLevel="4" Value="6"/>
+                <Count DiffLevel="5" Value="6"/>
+                <Count DiffLevel="6" Value="6"/>
+                <Count DiffLevel="7" Value="6"/>
+                <Count DiffLevel="8" Value="6"/>
+                <Count DiffLevel="9" Value="6"/>
+                <Count DiffLevel="10" Value="6"/>
+            </Unit>
+            <Time Type="Arrival">
+                <Duration DiffLevel="1" Value="90"/>
+                <Duration DiffLevel="2" Value="90"/>
+                <Duration DiffLevel="3" Value="90"/>
+                <Duration DiffLevel="4" Value="90"/>
+                <Duration DiffLevel="5" Value="90"/>
+                <Duration DiffLevel="6" Value="90"/>
+                <Duration DiffLevel="7" Value="90"/>
+                <Duration DiffLevel="8" Value="90"/>
+                <Duration DiffLevel="9" Value="90"/>
+                <Duration DiffLevel="10" Value="90"/>
+            </Time>
+        </Step>
+    </Definition>
+</AIData>
