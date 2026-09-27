@@ -8,6 +8,10 @@ If you find something is off, by all mean, yell at me.
 
 Blizzard stance on mod's intellectual property is very vague, hence it is not clear if mods are Blizzard's or the modder's property. For this reason, no copyright license are provided but for all intent and purposes consider this under a copyleft license
 
+## Dependencies
+
+Requires [**Arty's Misc. Tool**](https://github.com/Artychette/SC2-AMT) mod.
+
 ## Manual hook 
 If need be (say you already have several mission finished) you can hook the mod to your campaign without much trouble :
 - If your LotV maps still use `void(story)` dependency, then add said dep in your main mod (or any mod shared by all maps), then remove it from the maps  
