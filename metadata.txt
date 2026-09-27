@@ -1,0 +1,5 @@
+title=Arty's LotV
+desc=Customizable Base for LotV
+author=Artychette
+campaign=LotV
+version=1.0
