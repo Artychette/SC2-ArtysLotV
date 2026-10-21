@@ -1293,13 +1293,13 @@ string libVCST_gf_NextAvailableMission (string lp_location) {
     auto11BEB419_ai = 1;
     while (auto11BEB419_ai <= auto11BEB419_ae) {
         lv_indexMission = CatalogEntryGet(c_gameCatalogMap, auto11BEB419_ai);
+        auto11BEB419_ai = auto11BEB419_ai + 1;
         if (CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission" && libVoiC_gf_StoryMapPlanet(lv_indexMission) == lp_location) {
             if ((libVoiC_gf_MissionStatusCheck(lv_indexMission, libVoiC_ge_MissionStatus_Available) == true)) {
                 return lv_indexMission;
             }
 
         }
-        auto11BEB419_ai = auto11BEB419_ai + 1;
     }
     return null;
 }
@@ -1432,13 +1432,13 @@ void libVCST_gf_PS_UpdateEpisodeFilter () {
     auto44D60EBD_ai = 1;
     while (auto44D60EBD_ai <= auto44D60EBD_ae) {
         lv_indexMission = CatalogEntryGet(c_gameCatalogMap, auto44D60EBD_ai);
+        auto44D60EBD_ai = auto44D60EBD_ai + 1;
         if (CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission" && libVoiC_gf_StoryMapPlanet(lv_indexMission) == libVoiC_gf_CurrentLocation()) {
             if ((libVoiC_gf_MissionStatusCheck(lv_indexMission, libVoiC_ge_MissionStatus_Completed) == true)) {
                 lv_episodeNumber += 1;
             }
 
         }
-        auto44D60EBD_ai = auto44D60EBD_ai + 1;
     }
     CutsceneAddGlobalFilter(("Episode" + IntToString(lv_episodeNumber)));
 }

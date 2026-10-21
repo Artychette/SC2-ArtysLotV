@@ -101,6 +101,15 @@ void libVoiC_InitVariables () {
     libVoiC_gv__FadeImage = c_invalidDialogControlId;
 }
 
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: PC_RunConfigCallBack (Global funcref)
+//--------------------------------------------------------------------------------------------------
+funcref<libVoiC_gf_PC_RunConfigCallback_Internal> libVoiC_gf_PC_RunConfigCallback = libVoiC_gf_PC_RunConfigCallback_Internal;
+
+void libVoiC_InitCustomScript () {
+}
+
 // Presets
 // Functions
 bool libVoiC_gf_CampaignDebugModeIsOn (string lp_mode) {
@@ -152,6 +161,7 @@ void libVoiC_gf_PC_DebugCampaignTechCreateDialog () {
     auto13D0B222_ai = 1;
     while (auto13D0B222_ai <= auto13D0B222_ae) {
         lv_indexMission = libVoiC_gf_PC_MapDataFromUserDataInstance(UserDataInstance("Maps", auto13D0B222_ai));
+        auto13D0B222_ai = auto13D0B222_ai + 1;
         if (lv_indexMission != null && CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission") {
             lv_indexArmyCategory = libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission);
             if ((lv_indexArmyCategory != null) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexArmyCategory) == true) && (libVoiC_gf_PC_DebugCampaignTechIsDupe(lv_indexMission, lv_indexArmyCategory) == false)) {
@@ -205,7 +215,6 @@ void libVoiC_gf_PC_DebugCampaignTechCreateDialog () {
             }
 
         }
-        auto13D0B222_ai = auto13D0B222_ai + 1;
     }
     libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 150, 50, c_anchorBottomRight, 200, 50, StringToText(""), StringExternal("Param/Value/lib_VoiC_447CE194"), "");
     libVoiC_gv_pC_DebugCampaignTechOK = DialogControlLastCreated();
@@ -553,11 +562,11 @@ void libVoiC_gf_PC_DebugCampaignTechStoreStates () {
     autoD272FB45_ai = 1;
     while (autoD272FB45_ai <= autoD272FB45_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoD272FB45_ai);
+        autoD272FB45_ai = autoD272FB45_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true)) {
             DataTableSetInt(true, ("DebugTechSaveArmyCategory_" + (lv_indexCategory)), (libVoiC_gf_PC_ArmyCategoryState(lv_indexCategory)));
         }
 
-        autoD272FB45_ai = autoD272FB45_ai + 1;
     }
 }
 
@@ -578,6 +587,7 @@ void libVoiC_gf_PC_DebugCampaignTechRestoreStates () {
     autoC216F282_ai = 1;
     while (autoC216F282_ai <= autoC216F282_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoC216F282_ai);
+        autoC216F282_ai = autoC216F282_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true)) {
             lv_stateValue = DataTableGetInt(true, ("DebugTechSaveArmyCategory_" + (lv_indexCategory)));
             auto87FA2ABA_val = lv_stateValue;
@@ -591,7 +601,6 @@ void libVoiC_gf_PC_DebugCampaignTechRestoreStates () {
             }
         }
 
-        autoC216F282_ai = autoC216F282_ai + 1;
     }
 }
 
@@ -610,6 +619,7 @@ bool libVoiC_gf_PC_DebugCampaignTechIsDupe (string lp_mission, string lp_categor
     auto4BF17532_ai = 1;
     while (auto4BF17532_ai <= auto4BF17532_ae) {
         lv_indexMission = libVoiC_gf_PC_MapDataFromUserDataInstance(UserDataInstance("Maps", auto4BF17532_ai));
+        auto4BF17532_ai = auto4BF17532_ai + 1;
         if (lv_indexMission != null && CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission") {
             if ((lv_indexMission == lp_mission)) {
                 return false;
@@ -620,7 +630,6 @@ bool libVoiC_gf_PC_DebugCampaignTechIsDupe (string lp_mission, string lp_categor
             }
 
         }
-        auto4BF17532_ai = auto4BF17532_ai + 1;
     }
     return false;
 }
@@ -766,6 +775,7 @@ void libVoiC_gf_PC_DefaultTechProgress (string lp_mission) {
     autoF9C1F36E_ai = 1;
     while (autoF9C1F36E_ai <= autoF9C1F36E_ae) {
         lv_indexMission = libVoiC_gf_PC_MapDataFromUserDataInstance(UserDataInstance("Maps", autoF9C1F36E_ai));
+        autoF9C1F36E_ai = autoF9C1F36E_ai + 1;
         if (lv_indexMission != null && CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission") {
             lv_indexArc = libVoiC_gf_StoryMapPlanet(lv_indexMission);
             if ((lv_indexArc == lv_currentArc)) {
@@ -788,13 +798,13 @@ void libVoiC_gf_PC_DefaultTechProgress (string lp_mission) {
                 }
             }
         }
-        autoF9C1F36E_ai = autoF9C1F36E_ai + 1;
     }
     if ((libVoiC_gf_MissionStatusCheck("PAiur03", libVoiC_ge_MissionStatus_Completed) == true)) {
         auto275A2403_ae = CatalogEntryCount(c_gameCatalogArmyCategory);
         auto275A2403_ai = 1;
         while (auto275A2403_ai <= auto275A2403_ae) {
             lv_indexArmyCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto275A2403_ai);
+            auto275A2403_ai = auto275A2403_ai + 1;
             if ((libVoiC_gf_ArmyCategoryStateCheck(lv_indexArmyCategory, c_armyCategoryStateUnlocked) == true)) {
                 autoD1710475_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexArmyCategory, "ArmyUnitArray", 1);
                 autoD1710475_ai = 1;
@@ -806,7 +816,6 @@ void libVoiC_gf_PC_DefaultTechProgress (string lp_mission) {
                 }
             }
 
-            auto275A2403_ai = auto275A2403_ai + 1;
         }
     }
 
@@ -1256,6 +1265,7 @@ string libVoiC_gf_PC_DebugProgressMissionSoATierUnlocked (string lp_mission) {
     auto7259797A_ai = 1;
     while (auto7259797A_ai <= auto7259797A_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[auto7259797A_ai];
+        auto7259797A_ai += 1;
         if ((libVoiC_gf_MissionUnlocksSpearofAdunTier(lv_indexMission) > 0)) {
             lv_unlockCount += 1;
             if ((lv_indexMission == lp_mission)) {
@@ -1264,7 +1274,6 @@ string libVoiC_gf_PC_DebugProgressMissionSoATierUnlocked (string lp_mission) {
 
         }
 
-        auto7259797A_ai += 1;
     }
     return null;
 }
@@ -1377,6 +1386,7 @@ void libVoiC_gf_PC_DebugProgressAdjustBonusObjectives () {
     autoD9A13FEE_ai = 1;
     while (autoD9A13FEE_ai <= autoD9A13FEE_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[autoD9A13FEE_ai];
+        autoD9A13FEE_ai += 1;
         autoE13612E9_ae = CatalogFieldValueCount(c_gameCatalogMap, lv_indexMission, "ObjectiveArray", 1);
         autoE13612E9_ai = 1;
         while (autoE13612E9_ai <= autoE13612E9_ae) {
@@ -1387,7 +1397,6 @@ void libVoiC_gf_PC_DebugProgressAdjustBonusObjectives () {
             }
 
         }
-        autoD9A13FEE_ai += 1;
     }
     libVoiC_gf_PC_SoACalculateCurrency();
     TextExpressionSetToken("Param/Expression/lib_VoiC_331CB012", "A", IntToText(libVoiC_gf_NumberOfMissions(libVoiC_ge_MissionCountOptions_Completed)));
@@ -1504,7 +1513,7 @@ void libVoiC_gf_PC_DebugProgressSetObjectiveProgress (string lp_missionObjective
 void libVoiC_gf_PC_DebugProgressUpdateTutorialProgress (string lp_currentMission) {
     // Automatic Variable Declarations
     // Implementation
-    libVoiC_gf_PC_UpdateWeaponArmorUpgrades(1);
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateWeaponNArmorUpgrades");
     if ((TechTreeUpgradeIsAllowed(1, "ProtossAirWeaponsLevel1") == true) && (libVoiC_gv_pCX_UpgradesTaught == false)) {
         libVoiC_gv_pCX_UpgradesTaught = true;
     }
@@ -1776,11 +1785,11 @@ void libVoiC_gf_PC_AchievementAwardArmy () {
     auto5AA06F65_ai = 1;
     while (auto5AA06F65_ai <= auto5AA06F65_ae) {
         lv_indexArmyCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto5AA06F65_ai);
+        auto5AA06F65_ai = auto5AA06F65_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryPurchasedUnit(lv_indexArmyCategory) != null)) {
             AchievementTermQuantitySet(1, UserDataGetGameLink("TechUnit", libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexArmyCategory), "AchievementTermUpgrade", 1), 1);
         }
 
-        auto5AA06F65_ai = auto5AA06F65_ai + 1;
     }
 }
 
@@ -2065,13 +2074,13 @@ bool libVoiC_gf_MissionAvailableOnPlanet (string lp_planet) {
     auto11EF2CBB_ai = 1;
     while (auto11EF2CBB_ai <= auto11EF2CBB_ae) {
         lv_mission = CatalogEntryGet(c_gameCatalogMap, auto11EF2CBB_ai);
+        auto11EF2CBB_ai = auto11EF2CBB_ai + 1;
         if (CatalogFieldValueGet(c_gameCatalogMap, lv_mission, "Kind", 1) == "Mission" && libVoiC_gf_StoryMapPlanet(lv_mission) == lp_planet) {
             if ((libVoiC_gf_MissionStatusCheck(lv_mission, libVoiC_ge_MissionStatus_Available) == true)) {
                 return true;
             }
 
         }
-        auto11EF2CBB_ai = auto11EF2CBB_ai + 1;
     }
     return false;
 }
@@ -2846,11 +2855,11 @@ string libVoiC_gf_PC_MapDataFromUserDataInstance (string lp_map) {
     auto1CB5295B_ai = 1;
     while (auto1CB5295B_ai <= auto1CB5295B_ae) {
         lv_indexMap = CatalogEntryGet(c_gameCatalogMap, auto1CB5295B_ai);
+        auto1CB5295B_ai = auto1CB5295B_ai + 1;
         if ((libVoiC_gf_PC_MapUserDataInstance(lv_indexMap) == lp_map)) {
             return lv_indexMap;
         }
 
-        auto1CB5295B_ai = auto1CB5295B_ai + 1;
     }
     return null;
 }
@@ -3034,11 +3043,21 @@ void libVoiC_gf_StoryMapSwitch (string lp_nextMap) {
 
 void libVoiC_gf_UpdateMissionFlow () {
     // Variable Declarations
-    string lv_indexMission;
+    trigger lv_callback;
 
     // Automatic Variable Declarations
     // Variable Initialization
 
+    // Implementation
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateMissionFlow");
+    UserDataSetInt("StoryStates", "MissionCompletedCount", "Value", 1, libVoiC_gf_NumberOfMissions(libVoiC_ge_MissionCountOptions_Completed));
+    UserDataSetInt("StoryStates", "ArcsCompletedCount", "Value", 1, libVoiC_gf_NumberOfMissionArcsCompleted());
+    UserDataSetInt("StoryStates", "ArcsVisitedCount", "Value", 1, libVoiC_gf_NumberOfMissionArcsVisited());
+    libVoiC_gf_PC_UpdateCompletedMissionArray();
+}
+
+bool libVoiC_gf_PC_UpdateMissionFlow_Internal (bool lp_runAction, bool lp_checkCond) {
+    // Automatic Variable Declarations
     // Implementation
     libVoiC_gf_PC_LockUnlockMissionIfCondition(false, "PAiur01", true);
     libVoiC_gf_PC_LockUnlockMissionIfCondition(false, "PAiur02", libVoiC_gf_MissionStatusCheck("PAiur01", libVoiC_ge_MissionStatus_Completed));
@@ -3062,10 +3081,7 @@ void libVoiC_gf_UpdateMissionFlow () {
     libVoiC_gf_PC_LockUnlockMissionIfCondition(false, "SC2Epilogue01", (libVoiC_gf_NumberOfMissionArcsCompleted() >= 9));
     libVoiC_gf_PC_LockUnlockMissionIfCondition(false, "SC2Epilogue02", libVoiC_gf_MissionStatusCheck("SC2Epilogue01", libVoiC_ge_MissionStatus_Completed));
     libVoiC_gf_PC_LockUnlockMissionIfCondition(false, "SC2Epilogue03", libVoiC_gf_MissionStatusCheck("SC2Epilogue02", libVoiC_ge_MissionStatus_Completed));
-    UserDataSetInt("StoryStates", "MissionCompletedCount", "Value", 1, libVoiC_gf_NumberOfMissions(libVoiC_ge_MissionCountOptions_Completed));
-    UserDataSetInt("StoryStates", "ArcsCompletedCount", "Value", 1, libVoiC_gf_NumberOfMissionArcsCompleted());
-    UserDataSetInt("StoryStates", "ArcsVisitedCount", "Value", 1, libVoiC_gf_NumberOfMissionArcsVisited());
-    libVoiC_gf_PC_UpdateCompletedMissionArray();
+    return true;
 }
 
 void libVoiC_gf_PC_UpdateCompletedMissionArray () {
@@ -3093,6 +3109,7 @@ void libVoiC_gf_PC_UpdateCompletedMissionArray () {
     auto8EFDC5D4_ai = 1;
     while (auto8EFDC5D4_ai <= auto8EFDC5D4_ae) {
         lv_indexMision = libVoiC_gf_PC_MapDataFromUserDataInstance(UserDataInstance("Maps", auto8EFDC5D4_ai));
+        auto8EFDC5D4_ai = auto8EFDC5D4_ai + 1;
         if (lv_indexMision != null && CatalogFieldValueGet(c_gameCatalogMap, lv_indexMision, "Kind", 1) == "Mission") {
             if ((libVoiC_gf_MissionStatusCheck(lv_indexMision, libVoiC_ge_MissionStatus_Completed) == true)) {
                 lv_count += 1;
@@ -3100,7 +3117,6 @@ void libVoiC_gf_PC_UpdateCompletedMissionArray () {
             }
 
         }
-        auto8EFDC5D4_ai = auto8EFDC5D4_ai + 1;
     }
     autoD6C0623A_ae = (lv_count - 1);
     lv_indexOuter = 1;
@@ -4368,7 +4384,7 @@ bool libVoiC_gf_SpearofAdunHasUnusedTech () {
     return false;
 }
 
-void libVoiC_gf_PC_UpdateSoAStates () {
+bool libVoiC_gf_PC_UpdateSoAStates_Internal (bool lp_runAction, bool lp_checkCond) {
     // Variable Declarations
     string lv_indexSoAUpgrade;
 
@@ -4389,6 +4405,7 @@ void libVoiC_gf_PC_UpdateSoAStates () {
         }
 
     }
+    return true;
 }
 
 void libVoiC_gf_PC_SaveSoAToBank (bank lp_bank, string lp_section) {
@@ -4479,11 +4496,11 @@ string libVoiC_gf_PC_ArmyCategoryOfTechUnit (string lp_techUnit) {
     auto0502DF11_ai = 1;
     while (auto0502DF11_ai <= auto0502DF11_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto0502DF11_ai);
+        auto0502DF11_ai = auto0502DF11_ai + 1;
         if ((libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexCategory) == lp_techUnit)) {
             return lv_indexCategory;
         }
 
-        auto0502DF11_ai = auto0502DF11_ai + 1;
     }
     return null;
 }
@@ -4741,7 +4758,7 @@ string libVoiC_gf_PC_ArmyCategoryPurchasedUnit (string lp_armyCategory) {
     return null;
 }
 
-void libVoiC_gf_PC_UpdateArmyCategoryStates (int lp_player) {
+bool libVoiC_gf_PC_UpdateArmyCategoryStates_Internal (bool lp_runAction, bool lp_checkCond) {
     // Variable Declarations
     string lv_indexCategory;
     string lv_indexMission;
@@ -4767,8 +4784,8 @@ void libVoiC_gf_PC_UpdateArmyCategoryStates (int lp_player) {
     auto28EC32EC_ai = 1;
     while (auto28EC32EC_ai <= auto28EC32EC_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto28EC32EC_ai);
-        DataTableSetBool(false, (lv_indexCategory), false);
         auto28EC32EC_ai = auto28EC32EC_ai + 1;
+        DataTableSetBool(false, (lv_indexCategory), false);
     }
     auto4E6D0E2C_ae = CatalogEntryCount(c_gameCatalogMap);
     auto4E6D0E2C_ai = 1;
@@ -4798,14 +4815,15 @@ void libVoiC_gf_PC_UpdateArmyCategoryStates (int lp_player) {
     autoC8E789DF_ai = 1;
     while (autoC8E789DF_ai <= autoC8E789DF_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoC8E789DF_ai);
+        autoC8E789DF_ai = autoC8E789DF_ai + 1;
         if ((DataTableGetBool(false, (lv_indexCategory)) == true)) {
             libVoiC_gf_PC_SetArmyCategoryState(lv_indexCategory, c_armyCategoryStateUnlocked);
         }
         else {
             libVoiC_gf_PC_SetArmyCategoryState(lv_indexCategory, c_armyCategoryStateLocked);
         }
-        autoC8E789DF_ai = autoC8E789DF_ai + 1;
     }
+    return true;
 }
 
 bool libVoiC_gf_PC_ArmyCategoryUsedInUI (string lp_armyCategory) {
@@ -4850,6 +4868,7 @@ bool libVoiC_gf_ArmyHasUnusedTech () {
     auto06F724AF_ai = 1;
     while (auto06F724AF_ai <= auto06F724AF_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto06F724AF_ai);
+        auto06F724AF_ai = auto06F724AF_ai + 1;
         if ((libVoiC_gf_ArmyCategoryStateCheck(lv_indexCategory, c_armyCategoryStateUnlocked) == true) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true)) {
             lv_categoryFilled = false;
             auto7700F035_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
@@ -4872,7 +4891,6 @@ bool libVoiC_gf_ArmyHasUnusedTech () {
 
         }
 
-        auto06F724AF_ai = auto06F724AF_ai + 1;
     }
     return false;
 }
@@ -4895,6 +4913,7 @@ int libVoiC_gf_NumberOfUnupgradedArmyCategories () {
     auto3E569C64_ai = 1;
     while (auto3E569C64_ai <= auto3E569C64_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto3E569C64_ai);
+        auto3E569C64_ai = auto3E569C64_ai + 1;
         if ((libVoiC_gf_ArmyCategoryStateCheck(lv_indexCategory, c_armyCategoryStateUnlocked) == true) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true)) {
             if ((libVoiC_gf_PC_StoryArmyUnitState(libVoiC_gf_StoryArmyUnitInCategory(lv_indexCategory, 1)) != c_armyUnitStatePurchased) && (libVoiC_gf_PC_StoryArmyUnitState(libVoiC_gf_StoryArmyUnitInCategory(lv_indexCategory, 2)) != c_armyUnitStatePurchased) && (libVoiC_gf_PC_StoryArmyUnitState(libVoiC_gf_StoryArmyUnitInCategory(lv_indexCategory, 3)) != c_armyUnitStatePurchased)) {
                 lv_unupgradedCategoriesCount = (lv_unupgradedCategoriesCount + 1);
@@ -4902,7 +4921,6 @@ int libVoiC_gf_NumberOfUnupgradedArmyCategories () {
 
         }
 
-        auto3E569C64_ai = auto3E569C64_ai + 1;
     }
     return lv_unupgradedCategoriesCount;
 }
@@ -4931,6 +4949,7 @@ string libVoiC_gf_PC_ArmyUnitOfTechUnit (string lp_armyUnit) {
     auto08EA5277_ai = 1;
     while (auto08EA5277_ai <= auto08EA5277_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto08EA5277_ai);
+        auto08EA5277_ai = auto08EA5277_ai + 1;
         auto53287F0D_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
         auto53287F0D_ai = 1;
         while (auto53287F0D_ai <= auto53287F0D_ae) {
@@ -4941,7 +4960,6 @@ string libVoiC_gf_PC_ArmyUnitOfTechUnit (string lp_armyUnit) {
 
             auto53287F0D_ai = auto53287F0D_ai + 1;
         }
-        auto08EA5277_ai = auto08EA5277_ai + 1;
     }
     return null;
 }
@@ -5052,6 +5070,7 @@ string libVoiC_gf_PC_ArmyCategoryOfArmyUnit (string lp_armyUnit) {
     autoCE15C86D_ai = 1;
     while (autoCE15C86D_ai <= autoCE15C86D_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoCE15C86D_ai);
+        autoCE15C86D_ai = autoCE15C86D_ai + 1;
         auto43B42A5A_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
         auto43B42A5A_ai = 1;
         while (auto43B42A5A_ai <= auto43B42A5A_ae) {
@@ -5062,7 +5081,6 @@ string libVoiC_gf_PC_ArmyCategoryOfArmyUnit (string lp_armyUnit) {
 
             auto43B42A5A_ai = auto43B42A5A_ai + 1;
         }
-        autoCE15C86D_ai = autoCE15C86D_ai + 1;
     }
     return null;
 }
@@ -5148,6 +5166,7 @@ string libVoiC_gf_PC_ArmyUnitSpecializationUnlockedAfterLastMission () {
     auto5CB48924_ai = 1;
     while (auto5CB48924_ai <= auto5CB48924_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[auto5CB48924_ai];
+        auto5CB48924_ai += 1;
         lv_rewardCategory = libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission);
         if ((lv_rewardCategory != null) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_rewardCategory) == true)) {
             auto7083C172_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_rewardCategory, "ArmyUnitArray", 1);
@@ -5166,7 +5185,6 @@ string libVoiC_gf_PC_ArmyUnitSpecializationUnlockedAfterLastMission () {
             }
         }
 
-        auto5CB48924_ai += 1;
     }
     if ((UserDataGetInt("Maps", libVoiC_gf_PC_MapUserDataInstance(libVoiC_gf_LastSuccessfulMission()), "RewardsUnitDynamic", 1) != 1)) {
         lv_mostRecentlyUnlockedUnit = null;
@@ -5192,7 +5210,7 @@ void libVoiC_gf_PC_ArmyUnitSetNew (string lp_armyUnit, bool lp_new) {
     UserDataSetInt("TechUnit", libVoiC_gf_PC_TechUnitOfArmyUnit(lp_armyUnit), "IsNew", 1, BoolToInt(lp_new));
 }
 
-void libVoiC_gf_PC_UpdateArmyUnitStates () {
+bool libVoiC_gf_PC_UpdateArmyUnitStates_Internal (bool lp_runAction, bool lp_checkCond) {
     // Variable Declarations
     string lv_indexMission;
     string lv_indexCategory;
@@ -5224,23 +5242,24 @@ void libVoiC_gf_PC_UpdateArmyUnitStates () {
     auto5C61A5BA_ai = 1;
     while (auto5C61A5BA_ai <= auto5C61A5BA_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto5C61A5BA_ai);
-        DataTableSetBool(false, (lv_indexCategory), false);
         auto5C61A5BA_ai = auto5C61A5BA_ai + 1;
+        DataTableSetBool(false, (lv_indexCategory), false);
     }
     auto89CF4D4F_ae = libVoiC_gf_NumberOfMissions(2);
     auto89CF4D4F_ai = 1;
     while (auto89CF4D4F_ai <= auto89CF4D4F_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[auto89CF4D4F_ai];
+        auto89CF4D4F_ai += 1;
         if ((libVoiC_gf_PC_MissionRewardsDynamicArmyUnit(lv_indexMission) == true)) {
             lv_armyUnitUnlockCount += 1;
         }
 
-        auto89CF4D4F_ai += 1;
     }
     autoFEF42473_ae = libVoiC_gf_NumberOfMissions(2);
     autoFEF42473_ai = 1;
     while (autoFEF42473_ai <= autoFEF42473_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[autoFEF42473_ai];
+        autoFEF42473_ai += 1;
         lv_indexCategory2 = libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission);
         if ((lv_indexCategory2 != null) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory2) == true) && (lv_armyUnitUnlockCount > 0)) {
             auto03198141_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory2, "ArmyUnitArray", 1);
@@ -5257,12 +5276,12 @@ void libVoiC_gf_PC_UpdateArmyUnitStates () {
             }
         }
 
-        autoFEF42473_ai += 1;
     }
     auto6B214DBC_ae = CatalogEntryCount(c_gameCatalogArmyCategory);
     auto6B214DBC_ai = 1;
     while (auto6B214DBC_ai <= auto6B214DBC_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto6B214DBC_ai);
+        auto6B214DBC_ai = auto6B214DBC_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true)) {
             auto2852A76A_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
             auto2852A76A_ai = 1;
@@ -5281,8 +5300,8 @@ void libVoiC_gf_PC_UpdateArmyUnitStates () {
             }
         }
 
-        auto6B214DBC_ai = auto6B214DBC_ai + 1;
     }
+    return true;
 }
 
 void libVoiC_gf_PC_SaveArmyCategoryToBank (bank lp_bank, string lp_section) {
@@ -5300,8 +5319,8 @@ void libVoiC_gf_PC_SaveArmyCategoryToBank (bank lp_bank, string lp_section) {
     auto6929ACA3_ai = 1;
     while (auto6929ACA3_ai <= auto6929ACA3_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto6929ACA3_ai);
-        libVoiC_gf_PC_SaveTransitionVarInteger(lp_bank, lp_section, (lv_indexCategory), (libVoiC_gf_PC_ArmyCategoryState(lv_indexCategory)), 0);
         auto6929ACA3_ai = auto6929ACA3_ai + 1;
+        libVoiC_gf_PC_SaveTransitionVarInteger(lp_bank, lp_section, (lv_indexCategory), (libVoiC_gf_PC_ArmyCategoryState(lv_indexCategory)), 0);
     }
 }
 
@@ -5323,6 +5342,7 @@ void libVoiC_gf_PC_SaveArmyUnitsToBank (bank lp_bank, string lp_section) {
     autoC9B820C2_ai = 1;
     while (autoC9B820C2_ai <= autoC9B820C2_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoC9B820C2_ai);
+        autoC9B820C2_ai = autoC9B820C2_ai + 1;
         autoA02710CE_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
         autoA02710CE_ai = 1;
         while (autoA02710CE_ai <= autoA02710CE_ae) {
@@ -5331,7 +5351,6 @@ void libVoiC_gf_PC_SaveArmyUnitsToBank (bank lp_bank, string lp_section) {
             libVoiC_gf_PC_SaveTransitionVarBoolean(lp_bank, lp_section, ((lv_indexUpgrade) + "New"), libVoiC_gf_PC_StoryArmyUnitState2(lv_indexUpgrade), true);
             autoA02710CE_ai = autoA02710CE_ai + 1;
         }
-        autoC9B820C2_ai = autoC9B820C2_ai + 1;
     }
 }
 
@@ -5352,10 +5371,10 @@ void libVoiC_gf_PC_LoadArmyCategoryFromBank (bank lp_bank, string lp_section) {
     autoA91440CA_ai = 1;
     while (autoA91440CA_ai <= autoA91440CA_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoA91440CA_ai);
+        autoA91440CA_ai = autoA91440CA_ai + 1;
         lv_stateInt = libVoiC_gf_PC_LoadTransitionVarInteger(lp_bank, lp_section, (lv_indexCategory), 0);
         lv_state = lv_stateInt;
         libVoiC_gf_PC_SetArmyCategoryState(lv_indexCategory, lv_state);
-        autoA91440CA_ai = autoA91440CA_ai + 1;
     }
 }
 
@@ -5380,6 +5399,7 @@ void libVoiC_gf_PC_LoadArmyUnitsFromBank (bank lp_bank, string lp_section) {
     autoD6E37B85_ai = 1;
     while (autoD6E37B85_ai <= autoD6E37B85_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoD6E37B85_ai);
+        autoD6E37B85_ai = autoD6E37B85_ai + 1;
         auto8AEA5648_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
         auto8AEA5648_ai = 1;
         while (auto8AEA5648_ai <= auto8AEA5648_ae) {
@@ -5390,7 +5410,6 @@ void libVoiC_gf_PC_LoadArmyUnitsFromBank (bank lp_bank, string lp_section) {
             libVoiC_gf_PC_ArmyUnitSetNew(lv_indexUpgrade, libVoiC_gf_PC_LoadTransitionVarBoolean(lp_bank, lp_section, ((lv_indexUpgrade) + "New"), true));
             auto8AEA5648_ai = auto8AEA5648_ai + 1;
         }
-        autoD6E37B85_ai = autoD6E37B85_ai + 1;
     }
 }
 
@@ -5421,6 +5440,7 @@ void libVoiC_gf_PC_ApplyArmyTech (int lp_player) {
     auto9EF57A55_ai = 1;
     while (auto9EF57A55_ai <= auto9EF57A55_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto9EF57A55_ai);
+        auto9EF57A55_ai = auto9EF57A55_ai + 1;
         libVoiC_gf_EnableCampaignTechUnit(false, libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexCategory), lp_player);
         auto7AD1A88C_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
         auto7AD1A88C_ai = 1;
@@ -5429,12 +5449,12 @@ void libVoiC_gf_PC_ApplyArmyTech (int lp_player) {
             libVoiC_gf_EnableCampaignTechUnit(false, libVoiC_gf_PC_TechUnitOfArmyUnit(lv_indexCategory2), lp_player);
             auto7AD1A88C_ai = auto7AD1A88C_ai + 1;
         }
-        auto9EF57A55_ai = auto9EF57A55_ai + 1;
     }
     auto1D234705_ae = CatalogEntryCount(c_gameCatalogArmyCategory);
     auto1D234705_ai = 1;
     while (auto1D234705_ai <= auto1D234705_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto1D234705_ai);
+        auto1D234705_ai = auto1D234705_ai + 1;
         if ((libVoiC_gf_ArmyCategoryStateCheck(lv_indexCategory, c_armyCategoryStateUnlocked) == true)) {
             lv_categoryEnableDisable = true;
             autoA7240716_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
@@ -5456,7 +5476,6 @@ void libVoiC_gf_PC_ApplyArmyTech (int lp_player) {
             libVoiC_gf_EnableCampaignTechUnit(true, libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexCategory), lp_player);
         }
 
-        auto1D234705_ai = auto1D234705_ai + 1;
     }
 }
 
@@ -5475,8 +5494,8 @@ void libVoiC_gf_PC_ResetArmyTech () {
     auto7517AB57_ai = 1;
     while (auto7517AB57_ai <= auto7517AB57_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto7517AB57_ai);
-        libVoiC_gf_PC_SetArmyCategoryState(lv_indexCategory, c_armyCategoryStateLocked);
         auto7517AB57_ai = auto7517AB57_ai + 1;
+        libVoiC_gf_PC_SetArmyCategoryState(lv_indexCategory, c_armyCategoryStateLocked);
     }
 }
 
@@ -5763,7 +5782,7 @@ fixed libVoiC_gf_CostOfAbility (string lp_ability, string lp_costType) {
     return StringToFixed(lv_value);
 }
 
-void libVoiC_gf_PC_UpdatePerkStates () {
+bool libVoiC_gf_PC_UpdatePerkStates_Internal (bool lp_runAction, bool lp_checkCond) {
     // Variable Declarations
     string lv_indexPerk;
     string lv_indexGroup;
@@ -5824,6 +5843,7 @@ void libVoiC_gf_PC_UpdatePerkStates () {
         }
 
     }
+    return true;
 }
 
 void libVoiC_gf_PC_SavePerksToBank (bank lp_bank, string lp_section) {
@@ -5971,10 +5991,10 @@ void libVoiC_gf_PC_ApplyTech (int lp_player) {
 void libVoiC_gf_PC_UpdateTechStates (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    libVoiC_gf_PC_UpdateArmyCategoryStates(lp_player);
-    libVoiC_gf_PC_UpdateArmyUnitStates();
-    libVoiC_gf_PC_UpdatePerkStates();
-    libVoiC_gf_PC_UpdateSoAStates();
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateArmyCategoryStates");
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateArmyUnitStates");
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdatePerkStates");
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateSoAStates");
 }
 
 void libVoiC_gf_PC_ResetTech () {
@@ -6037,6 +6057,7 @@ void libVoiC_gf_ZS_HelpUnitsPanel_AddEnabledUnitType (string lp_unitType) {
     auto7A097FBB_ai = 1;
     while (auto7A097FBB_ai <= auto7A097FBB_ae) {
         lv_indexArmyCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto7A097FBB_ai);
+        auto7A097FBB_ai = auto7A097FBB_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryUnitType(lv_indexArmyCategory) == lp_unitType) && ((libVoiC_gf_PC_ArmyCategoryPurchasedUnit(lv_indexArmyCategory) != null) || (libVoiC_gf_PC_ArmyCategoryState(lv_indexArmyCategory) != c_armyCategoryStateUnlocked))) {
             return ;
         }
@@ -6051,7 +6072,6 @@ void libVoiC_gf_ZS_HelpUnitsPanel_AddEnabledUnitType (string lp_unitType) {
 
             autoE74A5121_ai = autoE74A5121_ai + 1;
         }
-        auto7A097FBB_ai = auto7A097FBB_ai + 1;
     }
     libVoiC_gv_pCX_HelpUnitPanel_EnabledUnitTypeCount += 1;
     libVoiC_gv_pCX_HelpUnitPanel_EnabledUnitTypes[libVoiC_gv_pCX_HelpUnitPanel_EnabledUnitTypeCount] = lp_unitType;
@@ -6103,12 +6123,12 @@ void libVoiC_gf_ZS_HelpUnitsPanel_UpdatePanel () {
         autoAA13B4AA_ai = 1;
         while (autoAA13B4AA_ai <= autoAA13B4AA_ae) {
             lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoAA13B4AA_ai);
+            autoAA13B4AA_ai = autoAA13B4AA_ai + 1;
             if ((libVoiC_gf_PC_ArmyCategoryUnitType(lv_indexCategory) == lv_unitType)) {
                 lv_category = lv_indexCategory;
                 break;
             }
 
-            autoAA13B4AA_ai = autoAA13B4AA_ai + 1;
         }
         TechTreeUnitHelp(1, lv_unitType, true);
     }
@@ -6178,7 +6198,7 @@ void libVoiC_gf_EnableCampaignTechUnit (bool lp_enableDisable, string lp_techUni
 
     }
 
-    libVoiC_gf_PC_UpdateWeaponArmorUpgrades(lp_player);
+    libVoiC_gf_PC_RunConfigCallback_Internal("UpdateWeaponNArmorUpgrades");
     if ((libVoiC_gf_PC_MissionisInstallation(libVoiC_gf_CurrentMap()) == false)) {
         if ((lp_enableDisable == true)) {
             if ((libVoiC_gv_pC_ApplyingCampaignTech == true)) {
@@ -6224,7 +6244,7 @@ string libVoiC_gf_PC_CampaignTechUnitType (string lp_techUnit) {
     return null;
 }
 
-void libVoiC_gf_PC_UpdateWeaponArmorUpgrades (int lp_player) {
+bool libVoiC_gf_PC_UpdateWeaponArmorUpgrades_Internal (bool lp_runAction, bool lp_checkCond) {
     // Variable Declarations
     bool lv_groundWeapon1;
     bool lv_groundWeapon2;
@@ -6281,11 +6301,11 @@ void libVoiC_gf_PC_UpdateWeaponArmorUpgrades (int lp_player) {
         lv_airArmor1 = true;
     }
 
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 0), lv_groundWeapon1);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 6), lv_shields1);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 3), lv_groundArmor1);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 0), lv_airWeapon1);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 3), lv_airArmor1);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 0), lv_groundWeapon1);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 6), lv_shields1);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 3), lv_groundArmor1);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 0), lv_airWeapon1);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 3), lv_airArmor1);
     if ((libVoiC_gf_NumberOfMissions(libVoiC_ge_MissionCountOptions_Completed) >= 8)) {
         if ((lv_groundWeapon1 == true)) {
             lv_groundWeapon2 = true;
@@ -6309,11 +6329,11 @@ void libVoiC_gf_PC_UpdateWeaponArmorUpgrades (int lp_player) {
         lv_airArmor2 = true;
     }
 
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 1), lv_groundWeapon2);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 7), lv_shields2);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 4), lv_groundArmor2);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 1), lv_airWeapon2);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 4), lv_airArmor2);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 1), lv_groundWeapon2);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 7), lv_shields2);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 4), lv_groundArmor2);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 1), lv_airWeapon2);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 4), lv_airArmor2);
     if ((libVoiC_gf_NumberOfMissions(libVoiC_ge_MissionCountOptions_Completed) >= 14)) {
         if ((lv_groundWeapon2 == true)) {
             lv_groundWeapon3 = true;
@@ -6337,11 +6357,12 @@ void libVoiC_gf_PC_UpdateWeaponArmorUpgrades (int lp_player) {
 
     }
 
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 2), lv_groundWeapon3);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 8), lv_shields3);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("ForgeResearch", 5), lv_groundArmor3);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 2), lv_airWeapon3);
-    TechTreeAbilityAllow(lp_player, AbilityCommand("CyberneticsCoreResearch", 5), lv_airArmor3);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 2), lv_groundWeapon3);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 8), lv_shields3);
+    TechTreeAbilityAllow(1, AbilityCommand("ForgeResearch", 5), lv_groundArmor3);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 2), lv_airWeapon3);
+    TechTreeAbilityAllow(1, AbilityCommand("CyberneticsCoreResearch", 5), lv_airArmor3);
+    return true;
 }
 
 void libVoiC_gf_PC_EnableUpgradeAndAbilityCommandForTech (bool lp_enableDisable, int lp_catalog, string lp_entry, string lp_upgradeField, string lp_abilCommandField, int lp_player) {
@@ -6520,6 +6541,7 @@ void libVoiC_gf_ULoadCampaignData (string lp_map) {
     TriggerDebugSetTypeFile(1, "StoryModeDebug.txt");
     TriggerDebugSetTypeFile(13, "CampaignStats.txt");
     libVoiC_gv_pC_CurrentMap = lp_map;
+    libVoiC_gf_PC_RunConfigCallback_Internal("MissionInitStart");
     if ((libVoiC_gf_PC_CampaignMapIsEpilogue(lp_map) == true)) {
         GameCheatAllow(c_gameCheatProgress, false);
         TriggerEnable(libVoiC_gt_PC_DebugProgress, false);
@@ -6618,6 +6640,7 @@ void libVoiC_gf_ULoadCampaignData (string lp_map) {
         }
     }
 
+    libVoiC_gf_PC_RunConfigCallback_Internal("MissionInitStart");
     TriggerSendEvent(libVoiC_gv_pCC_EVENT_MISSIONSTART);
 }
 
@@ -7307,6 +7330,7 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
     auto48774C10_ai = 1;
     while (auto48774C10_ai <= auto48774C10_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, auto48774C10_ai);
+        auto48774C10_ai = auto48774C10_ai + 1;
         lv_section = libVoiC_gf_PC_ArmyCategoryBankSection(lv_indexCategory);
         BankSectionRemove(libVoiC_gv_pC_ArmyTechBank, lv_section);
         auto8D929E0C_ae = CatalogFieldValueCount(c_gameCatalogArmyCategory, lv_indexCategory, "ArmyUnitArray", 1);
@@ -7317,7 +7341,6 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
             BankSectionRemove(libVoiC_gv_pC_ArmyTechBank, lv_section);
             auto8D929E0C_ai = auto8D929E0C_ai + 1;
         }
-        auto48774C10_ai = auto48774C10_ai + 1;
     }
     if ((lp_simulation == true)) {
         libVoiC_gf_PC_OpenCampaignBank();
@@ -7328,6 +7351,7 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
             autoCDD6D710_ai = 1;
             while (autoCDD6D710_ai <= autoCDD6D710_ae) {
                 lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoCDD6D710_ai);
+                autoCDD6D710_ai = autoCDD6D710_ai + 1;
                 lv_categoryState = libVoiC_gf_PC_LoadTransitionVarInteger(libVoiC_gv_pC_CampaignBank, lv_categorySection, (lv_indexCategory), 0);
                 lv_section = libVoiC_gf_PC_ArmyCategoryBankSection(lv_indexCategory);
                 lv_key = libVoiC_gf_PC_ArmyCategoryBankKey(lv_indexCategory);
@@ -7342,7 +7366,6 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
                     libVoiC_gf_PC_SaveTransitionVarInteger(libVoiC_gv_pC_ArmyTechBank, lv_section, lv_key, lv_unitState, 0);
                     auto69FACFC2_ai = auto69FACFC2_ai + 1;
                 }
-                autoCDD6D710_ai = autoCDD6D710_ai + 1;
             }
             BankSave(libVoiC_gv_pC_ArmyTechBank);
             return ;
@@ -7354,6 +7377,7 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
     autoE0F96F5D_ai = 1;
     while (autoE0F96F5D_ai <= autoE0F96F5D_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoE0F96F5D_ai);
+        autoE0F96F5D_ai = autoE0F96F5D_ai + 1;
         lv_section = libVoiC_gf_PC_ArmyCategoryBankSection(lv_indexCategory);
         lv_key = libVoiC_gf_PC_ArmyCategoryBankKey(lv_indexCategory);
         libVoiC_gf_PC_SaveTransitionVarInteger(libVoiC_gv_pC_ArmyTechBank, lv_section, lv_key, (libVoiC_gf_PC_ArmyCategoryState(lv_indexCategory)), 0);
@@ -7366,7 +7390,6 @@ void libVoiC_gf_PC_SaveArmyTechBank (string lp_nextMission, bool lp_simulation) 
             libVoiC_gf_PC_SaveTransitionVarInteger(libVoiC_gv_pC_ArmyTechBank, lv_section, lv_key, (libVoiC_gf_PC_StoryArmyUnitState(lv_indexUnit)), 0);
             autoF698B290_ai = autoF698B290_ai + 1;
         }
-        autoE0F96F5D_ai = autoE0F96F5D_ai + 1;
     }
     BankSave(libVoiC_gv_pC_ArmyTechBank);
     TextExpressionSetToken("Param/Expression/lib_VoiC_6F0FF8BB", "A", StringToText(lv_bankPath));
@@ -7393,11 +7416,11 @@ void libVoiC_gf_PC_OpenArmyTechBank () {
     autoC4517888_ai = 1;
     while (autoC4517888_ai <= autoC4517888_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoC4517888_ai);
+        autoC4517888_ai = autoC4517888_ai + 1;
         lv_bankPath = libVoiC_gf_PC_ArmyCategoryBankPath(lv_indexCategory);
         BankLoad(lv_bankPath, 1);
         libVoiC_gv_pC_ArmyTechBank = BankLastCreated();
         return ;
-        autoC4517888_ai = autoC4517888_ai + 1;
     }
 }
 
@@ -8064,6 +8087,38 @@ string libVoiC_gf_PC_StorySimulationMission () {
     // Automatic Variable Declarations
     // Implementation
     return libVoiC_gv_pS_StorySimulationMission;
+}
+
+void libVoiC_gf_PC_RunConfigCallback_Internal (string lp_callbackData) {
+    // Variable Declarations
+    trigger lv_callback;
+    string lv_triggerName;
+
+    // Automatic Variable Declarations
+    int autoD09474B0_ae;
+    int autoD09474B0_var;
+
+    // Variable Initialization
+    lv_triggerName = "";
+
+    // Implementation
+    autoD09474B0_ae = UserDataFieldValueCount("CampaignTriggerConfig", "Trigger");
+    autoD09474B0_var = 1;
+    for ( ; autoD09474B0_var <= autoD09474B0_ae; autoD09474B0_var += 1 ) {
+        lv_triggerName = UserDataGetString("CampaignTriggerConfig", lp_callbackData, "Trigger", autoD09474B0_var);
+        lv_callback = TriggerCreate(lv_triggerName);
+        if ((lv_callback == null)) {
+            lv_triggerName = (lv_triggerName + "_Func");
+            lv_callback = TriggerCreate(lv_triggerName);
+            if ((lv_callback == null)) {
+                continue;
+            }
+
+        }
+
+        TriggerExecute(lv_callback, false, true);
+        TriggerDestroy(lv_callback);
+    }
 }
 
 int libVoiC_gf_PC_StatEventLast () {
@@ -11024,6 +11079,7 @@ void libVoiC_InitLib () {
 
     libVoiC_InitLibraries();
     libVoiC_InitVariables();
+    libVoiC_InitCustomScript();
     libVoiC_InitTriggers();
 }
 

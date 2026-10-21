@@ -721,6 +721,7 @@ void libVCUI_gf_PU_ArmyInitDialogFromData (bool lp_debugOn) {
     autoB7D17714_ai = 1;
     while (autoB7D17714_ai <= autoB7D17714_ae) {
         lv_indexMission = libVoiC_gv_pC_MissionCompleted[autoB7D17714_ai];
+        autoB7D17714_ai += 1;
         lv_indexArmyCategory = libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission);
         if ((lv_indexArmyCategory != null) && (libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexArmyCategory) == true)) {
             lv_categoryIndex += 1;
@@ -733,7 +734,6 @@ void libVCUI_gf_PU_ArmyInitDialogFromData (bool lp_debugOn) {
             DialogControlSetEnabled(libVCUI_gv_pU_ArmyCategoryButtons[lv_categoryIndex], PlayerGroupAll(), true);
         }
 
-        autoB7D17714_ai += 1;
     }
     lv_categoryIndex = (libVCUI_gv_pU_ArmyCategoryCount+1);
     for ( ; ( (auto7B1F6FEB_ai >= 0 && lv_categoryIndex <= auto7B1F6FEB_ae) || (auto7B1F6FEB_ai < 0 && lv_categoryIndex >= auto7B1F6FEB_ae) ) ; lv_categoryIndex += auto7B1F6FEB_ai ) {
@@ -1216,11 +1216,11 @@ int libVCUI_gf_PU_ArmyCategoryCount () {
     autoB444D5B5_ai = 1;
     while (autoB444D5B5_ai <= autoB444D5B5_ae) {
         lv_indexCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoB444D5B5_ai);
+        autoB444D5B5_ai = autoB444D5B5_ai + 1;
         if ((libVoiC_gf_PC_ArmyCategoryUsedInUI(lv_indexCategory) == true) && (libVoiC_gf_ArmyCategoryStateCheck(lv_indexCategory, c_armyCategoryStateUnlocked) == true)) {
             lv_categoryCount += 1;
         }
 
-        autoB444D5B5_ai = autoB444D5B5_ai + 1;
     }
     return lv_categoryCount;
 }
@@ -3216,6 +3216,7 @@ void libVCUI_gf_PU_StarmapUpdateDisplay () {
     auto0A36738A_ai = 1;
     while (auto0A36738A_ai <= auto0A36738A_ae) {
         lv_indexMission = CatalogEntryGet(c_gameCatalogMap, auto0A36738A_ai);
+        auto0A36738A_ai = auto0A36738A_ai + 1;
         if (CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission" && libVoiC_gf_StoryMapPlanet(lv_indexMission) == libVCUI_gv_pU_StarmapLocations[libVCUI_gv_pU_StarmapSelection]) {
             if ((libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission) != null)) {
                 libNtve_gf_SetDialogItemUnitLink(libVCUI_gv_pU_StarmapUnitModels[lv_index], libVoiC_gf_PC_ArmyCategoryUnitType(libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission)), PlayerGroupAll());
@@ -3230,7 +3231,6 @@ void libVCUI_gf_PU_StarmapUpdateDisplay () {
             }
 
         }
-        auto0A36738A_ai = auto0A36738A_ai + 1;
     }
     if ((lv_index == 1)) {
         DialogControlSetVisible(libVCUI_gv_pU_StarmapMissionRewards, PlayerGroupAll(), false);
@@ -3289,13 +3289,13 @@ void libVCUI_gf_PU_StarmapPreload () {
             auto5CC1E984_ai = 1;
             while (auto5CC1E984_ai <= auto5CC1E984_ae) {
                 lv_indexMission = CatalogEntryGet(c_gameCatalogMap, auto5CC1E984_ai);
+                auto5CC1E984_ai = auto5CC1E984_ai + 1;
                 if (CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission" && libVoiC_gf_StoryMapPlanet(lv_indexMission) == lv_indexLocation) {
                     if ((libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission) != null)) {
                         libNtve_gf_PreloadUnit(libVoiC_gf_PC_ArmyCategoryUnitType(libVoiC_gf_MissionArmyCategoryUnlocked(lv_indexMission)), false);
                     }
 
                 }
-                auto5CC1E984_ai = auto5CC1E984_ai + 1;
             }
             ConversationDataPreloadLines(libVoiC_gf_StoryPlanetNonmissionPitch(lv_indexLocation));
             auto369378D5_val = lv_indexLocation;

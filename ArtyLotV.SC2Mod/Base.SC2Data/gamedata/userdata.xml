@@ -2854,6 +2854,47 @@
             </Image>
         </Instances>
     </CUser>
+    <CUser id="CampaignTriggerConfig">
+        <Fields>
+            <Id value="Trigger"/>
+            <Type value="String"/>
+            <Count value="5"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="UpdateMissionFlow">
+            <String String="libVoiC_gf_PC_UpdateMissionFlow_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="UpdateArmyCategoryStates">
+            <String String="libVoiC_gf_PC_UpdateArmyCategoryStates_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="UpdateArmyUnitStates">
+            <String String="libVoiC_gf_PC_UpdateArmyUnitStates_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="UpdatePerkStates">
+            <String String="libVoiC_gf_PC_UpdatePerkStates_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="UpdateSoAStates">
+            <String String="libVoiC_gf_PC_UpdateSoAStates_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="UpdateWeaponNArmorUpgrades">
+            <String String="libVoiC_gf_PC_UpdateWeaponArmorUpgrades_Internal">
+                <Field Id="Trigger"/>
+            </String>
+        </Instances>
+        <Instances Id="MissionInitStart"/>
+        <Instances Id="MissionStart"/>
+    </CUser>
     <CUser id="Clickable">
         <Fields Id="Name" Type="Text" EditorColumn="4"/>
         <Fields Id="Enabled" Type="Int" GameLinkType="Abil">
@@ -9049,7 +9090,12 @@
         <Fields Id="RequiredRace" Type="GameLink" GameLinkType="Race"/>
         <Fields Id="PortraitModel" Type="GameLink" GameLinkType="Model"/>
         <Fields Id="Movie" Type="Movie"/>
-        <Fields Id="UIOrder" Type="Int" Count="4"/>
+        <Fields>
+            <Id value="UIOrder"/>
+            <Type value="Int"/>
+            <Count value="4"/>
+            <EditorColumn value="6"/>
+        </Fields>
         <Fields>
             <Id value="ArmyGroup"/>
             <Type value="User"/>
@@ -11436,7 +11482,12 @@
         </Instances>
     </CUser>
     <CUser id="CampaignPerk">
-        <Fields Id="AbilityCommand" Type="AbilCmd" Count="5"/>
+        <Fields>
+            <Id value="AbilityCommand"/>
+            <Type value="AbilCmd"/>
+            <Count value="5"/>
+            <EditorColumn value="6"/>
+        </Fields>
         <Fields Id="Upgrade" Type="Upgrade" Count="5"/>
         <Fields>
             <Id value="Name"/>

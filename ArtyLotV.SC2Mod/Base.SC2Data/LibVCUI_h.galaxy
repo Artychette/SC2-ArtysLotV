@@ -50,7 +50,7 @@ const int libVCUI_ge_PU_UnitProgressBar_DialogTypes_ProgressBar_Broder = 3;
 
 // Constants
 const string libVCUI_gv_pUC_ArmyUIEventClosed = "PUC_ArmyEventClosed";
-const int libVCUI_gv_pUC_ArmyCategoryCountMax = 10;
+const int libVCUI_gv_pUC_ArmyCategoryCountMax = 32;
 const int libVCUI_gv_pUC_ArmyChoiceCount = 16;
 const int libVCUI_gv_pUC_ArmyFactionCount = 4;
 const int libVCUI_gv_pUC_BOTTOMBUTTONCOUNT = 4;

@@ -426,14 +426,43 @@ void libVCMI_gf_PM_CinematicModeInternal (bool lp_onOff, fixed lp_duration) {
 void libVCMI_gf_SpearofAdunTargetingModeExited (trigger t, int lp_exitType) {
     // Automatic Variable Declarations
     // Implementation
-    DataTableSetInt(false, TriggerEventParamName(libVCMI_gv_pMC_SoATargetingEventExited, libVCMI_gv_pMC_SoATargetingParamReason), (lp_exitType));
-    TriggerAddEventGeneric(t, libVCMI_gv_pMC_SoATargetingEventExited);
+    if ((lp_exitType == libVCMI_ge_SpearofAdunTargetingExitType_ByFiring)) {
+        libAMT_gf_TriggerAddEventTopBarFired(t, c_playerAny, null);
+    }
+    else {
+        libAMT_gf_TriggerAddEventTopBarCancelled(t, c_playerAny, null);
+    }
 }
 
 string libVCMI_gf_SpearofAdunTargetingModeAbility () {
+    // Variable Declarations
+    string lv_ability;
+    string lv_perkInstance;
+
     // Automatic Variable Declarations
+    string auto3DDCE50D_userType;
+    int auto3DDCE50D_i;
+    int auto064CEB32_ae;
+    int auto064CEB32_var;
+
+    // Variable Initialization
+    lv_ability = UserDataGetGameLink("AMTTopBarExtendedAbilty", StringWord(EventGenericName(),2), "ActivatingAbility", 1);
+
     // Implementation
-    return libVCMI_gv_pM_SoATargetingAbilityInstance;
+    auto3DDCE50D_userType = "CampaignPerk";
+    auto3DDCE50D_i = 1;
+    for ( ; auto3DDCE50D_i <= UserDataInstanceCount(auto3DDCE50D_userType) ; auto3DDCE50D_i += 1 ) {
+        lv_perkInstance = UserDataInstance(auto3DDCE50D_userType, auto3DDCE50D_i);
+        auto064CEB32_ae = UserDataFieldValueCount("CampaignPerk", "AbilityCommand");
+        auto064CEB32_var = 1;
+        for ( ; auto064CEB32_var <= auto064CEB32_ae; auto064CEB32_var += 1 ) {
+            if ((lv_ability == AbilityCommandGetAbility(UserDataGetAbilCmd("CampaignPerk", lv_perkInstance, "AbilityCommand", auto064CEB32_var)))) {
+                return lv_perkInstance;
+            }
+
+        }
+    }
+    return null;
 }
 
 void libVCMI_gf_PM_SoATargetingModeEnter () {
@@ -1246,6 +1275,7 @@ void libVCMI_gf_PM_MissionEndStats (int lp_type) {
         autoD86639D2_ai = 1;
         while (autoD86639D2_ai <= autoD86639D2_ae) {
             lv_indexArmyCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoD86639D2_ai);
+            autoD86639D2_ai = autoD86639D2_ai + 1;
             if ((libVoiC_gf_ArmyCategoryStateCheck(lv_indexArmyCategory, c_armyCategoryStateUnlocked) == true)) {
                 lv_purchasedUnit = libVoiC_gf_PC_ArmyCategoryPurchasedUnit(lv_indexArmyCategory);
                 if ((lv_purchasedUnit == null)) {
@@ -1256,7 +1286,6 @@ void libVCMI_gf_PM_MissionEndStats (int lp_type) {
                 }
             }
 
-            autoD86639D2_ai = autoD86639D2_ai + 1;
         }
         libVoiC_gf_PC_StatEventDone(libVoiC_gf_PC_StatEventLast());
         libVoiC_gf_PC_StatEventCreate("SoAChoices");
@@ -1299,6 +1328,7 @@ void libVCMI_gf_PM_MissionEndStats (int lp_type) {
     autoC085A94F_ai = 1;
     while (autoC085A94F_ai <= autoC085A94F_ae) {
         lv_indexArmyCategory = CatalogEntryGet(c_gameCatalogArmyCategory, autoC085A94F_ai);
+        autoC085A94F_ai = autoC085A94F_ai + 1;
         if ((libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexArmyCategory) != null) && (libVoiC_gf_PC_ArmyCategoryUnitType(lv_indexArmyCategory) != null) && (UserDataGetGameLink("TechUnit", libVoiC_gf_PC_TechUnitOfArmyCategory(lv_indexArmyCategory), "RequiredRace", 1) == "Prot")) {
             libVoiC_gf_PC_StatEventCreate("UnitStats");
             libVoiC_gf_PC_StatEventAddStr("UnitID", (libVoiC_gf_PC_ArmyCategoryUnitType(lv_indexArmyCategory)), libVoiC_gf_PC_StatEventLast());
@@ -1336,7 +1366,6 @@ void libVCMI_gf_PM_MissionEndStats (int lp_type) {
             }
         }
 
-        autoC085A94F_ai = autoC085A94F_ai + 1;
     }
     libVoiC_gf_PC_StatRecordMiscUnits();
     libVoiC_gf_PC_StatEventCreate("SoATargetingMode");

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <!-- ========== Global layout constants ========== -->
+    <Constant name="CategoryGapY" val="-52"/>
+    <Constant name="CategoryBaseLeft" val="60"/>
+    <!-- ========== Single-page button template (12 arc-arranged buttons) ========== -->
+    <Frame type="Frame" name="CategoryButtonPageTemplate">
+        <!-- Force-fill parent: ensure 3 pages fully overlap, toggle by visibility only -->
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <!-- Button 1: top anchor -->
+        <Frame type="Button" name="CategoryButton1" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="#CategoryBaseLeft"/>
+        </Frame>
+        <!-- Left-shift phase buttons 2-6 -->
+        <Frame type="Button" name="CategoryButton2" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton1" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton1" pos="Min" offset="-11"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton3" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton2" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton2" pos="Min" offset="-9"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton4" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton3" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton3" pos="Min" offset="-7"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton5" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton4" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton4" pos="Min" offset="-4"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton6" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton5" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton5" pos="Min" offset="-2"/>
+        </Frame>
+        <!-- Arc lowest point button 7 -->
+        <Frame type="Button" name="CategoryButton7" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton6" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton6" pos="Min" offset="-1"/>
+        </Frame>
+        <!-- Right-shift phase buttons 8-12 -->
+        <Frame type="Button" name="CategoryButton8" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton7" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton7" pos="Min" offset="2"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton9" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton8" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton8" pos="Min" offset="3"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton10" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton9" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton9" pos="Min" offset="5"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton11" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton10" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton10" pos="Min" offset="7"/>
+        </Frame>
+        <Frame type="Button" name="CategoryButton12" template="LotV_ArmyUpgradeUI/ArmyCategoryButtonTemplate">
+            <Anchor side="Top" relative="$parent/CategoryButton11" pos="Max" offset="#CategoryGapY"/>
+            <Anchor side="Left" relative="$parent/CategoryButton11" pos="Min" offset="9"/>
+        </Frame>
+    </Frame>
+    <!-- ========== Master list template: 3 pages + bottom-left nav bar ========== -->
+    <Frame type="Frame" name="CategoryList_PagedTemplate">
+        <!-- Master container fills parent -->
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+        <!-- 3 page containers: fully overlap, only page 1 visible by default -->
+        <Frame type="Frame" name="CategoryButtonPage1" template="LotV_ArmyUpgradeCategoryList/CategoryButtonPageTemplate">
+            <Visible val="true"/>
+        </Frame>
+        <Frame type="Frame" name="CategoryButtonPage2" template="LotV_ArmyUpgradeCategoryList/CategoryButtonPageTemplate">
+            <Visible val="false"/>
+        </Frame>
+        <Frame type="Frame" name="CategoryButtonPage3" template="LotV_ArmyUpgradeCategoryList/CategoryButtonPageTemplate">
+            <Visible val="false"/>
+        </Frame>
+        <!-- ========== Paging nav bar: fixed at bottom-left ========== -->
+        <!-- ========== 1. Custom arrow button template (unified style) ========== -->
+        <Frame type="Button" name="PageArrowButtonTemplate" template="StandardTemplates/StandardButtonTemplate">
+            <Width val="56"/>
+            <Height val="32"/>
+            <Frame type="Image" name="NormalImage">
+                <Texture val="Assets/Textures/ui_void_storybutton_small_normalpressed.dds"/>
+            </Frame>
+            <Frame type="Image" name="HoverImage">
+                <Texture val="Assets/Textures/ui_void_storybutton_small_normaloverpressedover.dds"/>
+            </Frame>
+            <Frame type="Label" name="Label" Alignment="Center Middle">
+                <Anchor relative="$parent"/>
+                <Style val="Void_ArmyCategoryName"/>
+            </Frame>
+        </Frame>
+        <!-- ========== 2. Nav bar container (empty; all buttons created by triggers) ========== -->
+        <Frame type="Frame" name="CategoryPageNav">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="120"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-50"/>
+            <Width val="160"/>
+            <Height val="36"/>
+            <CollapseLayout val="false"/>
+            <!-- No button instances are written here -->
+        </Frame>
+    </Frame>
+</Desc>

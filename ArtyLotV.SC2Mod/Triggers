@@ -23379,7 +23379,7 @@
             <FlagAction/>
             <Parameter Type="ParamDef" Library="VoiC" Id="427BEB11"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="8C3629B4"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="0F6789A0"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="1D1E00D1"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="5522D955"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="F735222F"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="0144D304"/>
@@ -23404,14 +23404,15 @@
                 Update in game upgrade tutorial messages.
             </Comment>
         </Element>
-        <Element Type="FunctionCall" Id="0F6789A0">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="8170989A"/>
-            <Parameter Type="Param" Library="VoiC" Id="D1A323CA"/>
+        <Element Type="FunctionCall" Id="1D1E00D1">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="8208E482"/>
         </Element>
-        <Element Type="Param" Id="D1A323CA">
-            <ParameterDef Type="ParamDef" Library="VoiC" Id="C64D3893"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
+        <Element Type="Param" Id="8208E482">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateWeaponNArmorUpgrades</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
         <Element Type="FunctionCall" Id="5522D955">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
@@ -34644,7 +34645,6 @@
             <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionDef" Id="D88B0815">
-            <Internal/>
             <FlagEvent/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="A516882D"/>
         </Element>
@@ -45752,6 +45752,7 @@
             <Item Type="FunctionDef" Library="VoiC" Id="D39CF114"/>
             <Item Type="FunctionDef" Library="VoiC" Id="E60A5269"/>
             <Item Type="FunctionDef" Library="VoiC" Id="3AFD36C8"/>
+            <Item Type="FunctionDef" Library="VoiC" Id="DAD9EC1E"/>
             <Item Type="FunctionDef" Library="VoiC" Id="9E03A60F"/>
             <Item Type="FunctionDef" Library="VoiC" Id="58797F7F"/>
             <Item Type="Comment" Library="VoiC" Id="77863781"/>
@@ -45810,10 +45811,10 @@
                 #AUTOVAR(ai) = 1;
                 while (#AUTOVAR(ai) &lt;= #AUTOVAR(ae)) {
                     #PARAM(indexMission) = libVoiC_gf_PC_MapDataFromUserDataInstance(UserDataInstance(&quot;Maps&quot;, #AUTOVAR(ai)));
+                    #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
                     if (#PARAM(indexMission) != null &amp;&amp; CatalogFieldValueGet(c_gameCatalogMap, #PARAM(indexMission), &quot;Kind&quot;, 1) == &quot;Mission&quot;) {
                         #SUBFUNCS(actions)
                     }
-                    #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
                 }
             </ScriptCode>
         </Element>
@@ -45841,8 +45842,8 @@
                 #AUTOVAR(ai) = 1;
                 while (#AUTOVAR(ai) &lt;= #AUTOVAR(ae)) {
                     #PARAM(indexMission) = libVoiC_gv_pC_MissionCompleted[#AUTOVAR(ai)];
-                    #SUBFUNCS(actions)
                     #AUTOVAR(ai) += 1;
+                    #SUBFUNCS(actions)
                 }
             </ScriptCode>
         </Element>
@@ -45870,8 +45871,8 @@
                 #AUTOVAR(ai) = 1;
                 while (#AUTOVAR(ai) &lt;= #AUTOVAR(ae)) {
                     #PARAM(indexMap) = CatalogEntryGet(c_gameCatalogMap, #AUTOVAR(ai));
-                    #SUBFUNCS(actions)
                     #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
+                    #SUBFUNCS(actions)
                 }
             </ScriptCode>
         </Element>
@@ -45900,10 +45901,10 @@
                 #AUTOVAR(ai) = 1;
                 while (#AUTOVAR(ai) &lt;= #AUTOVAR(ae)) {
                     #PARAM(mission) = CatalogEntryGet(c_gameCatalogMap, #AUTOVAR(ai));
+                    #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
                     if (CatalogFieldValueGet(c_gameCatalogMap, #PARAM(mission), &quot;Kind&quot;, 1) == &quot;Mission&quot; &amp;&amp; libVoiC_gf_StoryMapPlanet(#PARAM(mission)) == #PARAM(planet)) {
                         #SUBFUNCS(actions)
                     }
-                    #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
                 }
             </ScriptCode>
         </Element>
@@ -46105,7 +46106,168 @@
             <Identifier>UpdateMissionFlow</Identifier>
             <Label Type="Label" Library="Ntve" Id="0677E49B"/>
             <FlagAction/>
-            <Variable Type="Variable" Library="VoiC" Id="4935F252"/>
+            <Variable Type="Variable" Library="VoiC" Id="5FE97FBF"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9DB717E0"/>
+            <FunctionCall Type="Comment" Library="VoiC" Id="8EE05B78"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="34F2F849"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9A79A875"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="1BD0F046"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="63547E70"/>
+        </Element>
+        <Element Type="Variable" Id="5FE97FBF">
+            <VariableType>
+                <Type Value="trigger"/>
+            </VariableType>
+            <Value Type="Param" Library="VoiC" Id="B3BB2B52"/>
+        </Element>
+        <Element Type="Param" Id="B3BB2B52">
+            <Preset Type="PresetValue" Library="Ntve" Id="00000542"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9DB717E0">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="28EB9FAD"/>
+        </Element>
+        <Element Type="Param" Id="28EB9FAD">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateMissionFlow</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
+        </Element>
+        <Element Type="Comment" Id="8EE05B78">
+            <Comment>
+                Other updates
+            </Comment>
+        </Element>
+        <Element Type="FunctionCall" Id="34F2F849">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
+            <Parameter Type="Param" Library="VoiC" Id="FAE058C1"/>
+            <Parameter Type="Param" Library="VoiC" Id="FE0CB54E"/>
+            <Parameter Type="Param" Library="VoiC" Id="FE62B0BB"/>
+            <Parameter Type="Param" Library="VoiC" Id="49613B0D"/>
+            <Parameter Type="Param" Library="VoiC" Id="5283911B"/>
+        </Element>
+        <Element Type="Param" Id="FAE058C1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FE0CB54E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9689EEB9"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9689EEB9">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="76502DAD"/>
+            <Parameter Type="Param" Library="VoiC" Id="3B213A78"/>
+        </Element>
+        <Element Type="Param" Id="3B213A78">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="8B729DAC"/>
+            <Preset Type="PresetValue" Library="VoiC" Id="C85CC74E"/>
+        </Element>
+        <Element Type="Param" Id="FE62B0BB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
+            <Value>StoryStates</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="49613B0D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
+            <Value>MissionCompletedCount</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="Param" Id="5283911B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
+            <Value>Value</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9A79A875">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
+            <Parameter Type="Param" Library="VoiC" Id="4F58E187"/>
+            <Parameter Type="Param" Library="VoiC" Id="FA28E6C6"/>
+            <Parameter Type="Param" Library="VoiC" Id="BC5ECB56"/>
+            <Parameter Type="Param" Library="VoiC" Id="95A84BBC"/>
+            <Parameter Type="Param" Library="VoiC" Id="EF0F673D"/>
+        </Element>
+        <Element Type="Param" Id="4F58E187">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FA28E6C6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="49A490F2"/>
+        </Element>
+        <Element Type="FunctionCall" Id="49A490F2">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="737734FA"/>
+        </Element>
+        <Element Type="Param" Id="BC5ECB56">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
+            <Value>StoryStates</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="95A84BBC">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
+            <Value>ArcsCompletedCount</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="Param" Id="EF0F673D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
+            <Value>Value</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1BD0F046">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
+            <Parameter Type="Param" Library="VoiC" Id="28881427"/>
+            <Parameter Type="Param" Library="VoiC" Id="B14E0159"/>
+            <Parameter Type="Param" Library="VoiC" Id="D94D178E"/>
+            <Parameter Type="Param" Library="VoiC" Id="5D9E37CB"/>
+            <Parameter Type="Param" Library="VoiC" Id="930CA26C"/>
+        </Element>
+        <Element Type="Param" Id="28881427">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="B14E0159">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="6EB722A3"/>
+        </Element>
+        <Element Type="FunctionCall" Id="6EB722A3">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="2001FD36"/>
+        </Element>
+        <Element Type="Param" Id="D94D178E">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
+            <Value>StoryStates</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="5D9E37CB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
+            <Value>ArcsVisitedCount</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="Param" Id="930CA26C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
+            <Value>Value</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="StoryStates"/>
+        </Element>
+        <Element Type="FunctionCall" Id="63547E70">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="9E03A60F"/>
+        </Element>
+        <Element Type="FunctionDef" Id="DAD9EC1E">
+            <Internal/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="BBE11ACD"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="67614ACD"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="A6F871B2"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="E499FF3F"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="75D2E2F9"/>
@@ -46138,22 +46300,27 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="262C812C"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="4AE2211C"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="7234F6A4"/>
-            <FunctionCall Type="Comment" Library="VoiC" Id="8EE05B78"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="34F2F849"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9A79A875"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="1BD0F046"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="63547E70"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="5BC2D8F8"/>
         </Element>
-        <Element Type="Variable" Id="4935F252">
-            <Identifier>indexMission</Identifier>
-            <VariableType>
-                <Type Value="gamelink"/>
-                <GameType Value="Map"/>
-            </VariableType>
-            <Value Type="Param" Library="VoiC" Id="251C27B3"/>
+        <Element Type="ParamDef" Id="BBE11ACD">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="CA2E672D"/>
         </Element>
-        <Element Type="Param" Id="251C27B3">
-            <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
+        <Element Type="Param" Id="CA2E672D">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="67614ACD">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="93FAEACE"/>
+        </Element>
+        <Element Type="Param" Id="93FAEACE">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Comment" Id="A6F871B2">
             <Comment>
@@ -46996,132 +47163,14 @@
             <ParameterDef Type="ParamDef" Library="VoiC" Id="CD2CEA57"/>
             <Preset Type="PresetValue" Library="VoiC" Id="373B90AC"/>
         </Element>
-        <Element Type="Comment" Id="8EE05B78">
-            <Comment>
-                Other updates
-            </Comment>
+        <Element Type="FunctionCall" Id="5BC2D8F8">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="CC91BC04"/>
         </Element>
-        <Element Type="FunctionCall" Id="34F2F849">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
-            <Parameter Type="Param" Library="VoiC" Id="FAE058C1"/>
-            <Parameter Type="Param" Library="VoiC" Id="FE0CB54E"/>
-            <Parameter Type="Param" Library="VoiC" Id="FE62B0BB"/>
-            <Parameter Type="Param" Library="VoiC" Id="49613B0D"/>
-            <Parameter Type="Param" Library="VoiC" Id="5283911B"/>
-        </Element>
-        <Element Type="Param" Id="FAE058C1">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="FE0CB54E">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9689EEB9"/>
-        </Element>
-        <Element Type="FunctionCall" Id="9689EEB9">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="76502DAD"/>
-            <Parameter Type="Param" Library="VoiC" Id="3B213A78"/>
-        </Element>
-        <Element Type="Param" Id="3B213A78">
-            <ParameterDef Type="ParamDef" Library="VoiC" Id="8B729DAC"/>
-            <Preset Type="PresetValue" Library="VoiC" Id="C85CC74E"/>
-        </Element>
-        <Element Type="Param" Id="FE62B0BB">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
-            <Value>StoryStates</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="User"/>
-        </Element>
-        <Element Type="Param" Id="49613B0D">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
-            <Value>MissionCompletedCount</Value>
-            <ValueType Type="userinstance"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="Param" Id="5283911B">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
-            <Value>Value</Value>
-            <ValueType Type="userfield"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="FunctionCall" Id="9A79A875">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
-            <Parameter Type="Param" Library="VoiC" Id="4F58E187"/>
-            <Parameter Type="Param" Library="VoiC" Id="FA28E6C6"/>
-            <Parameter Type="Param" Library="VoiC" Id="BC5ECB56"/>
-            <Parameter Type="Param" Library="VoiC" Id="95A84BBC"/>
-            <Parameter Type="Param" Library="VoiC" Id="EF0F673D"/>
-        </Element>
-        <Element Type="Param" Id="4F58E187">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="FA28E6C6">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="49A490F2"/>
-        </Element>
-        <Element Type="FunctionCall" Id="49A490F2">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="737734FA"/>
-        </Element>
-        <Element Type="Param" Id="BC5ECB56">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
-            <Value>StoryStates</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="User"/>
-        </Element>
-        <Element Type="Param" Id="95A84BBC">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
-            <Value>ArcsCompletedCount</Value>
-            <ValueType Type="userinstance"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="Param" Id="EF0F673D">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
-            <Value>Value</Value>
-            <ValueType Type="userfield"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="FunctionCall" Id="1BD0F046">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0C607001"/>
-            <Parameter Type="Param" Library="VoiC" Id="28881427"/>
-            <Parameter Type="Param" Library="VoiC" Id="B14E0159"/>
-            <Parameter Type="Param" Library="VoiC" Id="D94D178E"/>
-            <Parameter Type="Param" Library="VoiC" Id="5D9E37CB"/>
-            <Parameter Type="Param" Library="VoiC" Id="930CA26C"/>
-        </Element>
-        <Element Type="Param" Id="28881427">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D7CD16A"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
-        </Element>
-        <Element Type="Param" Id="B14E0159">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="F5FDED27"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="6EB722A3"/>
-        </Element>
-        <Element Type="FunctionCall" Id="6EB722A3">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="2001FD36"/>
-        </Element>
-        <Element Type="Param" Id="D94D178E">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="01E73838"/>
-            <Value>StoryStates</Value>
-            <ValueType Type="gamelink"/>
-            <ValueGameType Type="User"/>
-        </Element>
-        <Element Type="Param" Id="5D9E37CB">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="1D32F9F4"/>
-            <Value>ArcsVisitedCount</Value>
-            <ValueType Type="userinstance"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="Param" Id="930CA26C">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="136F398B"/>
-            <Value>Value</Value>
-            <ValueType Type="userfield"/>
-            <ValueContext Value="StoryStates"/>
-        </Element>
-        <Element Type="FunctionCall" Id="63547E70">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="9E03A60F"/>
+        <Element Type="Param" Id="CC91BC04">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="FunctionDef" Id="9E03A60F">
             <Identifier>PC_UpdateCompletedMissionArray</Identifier>
@@ -62317,12 +62366,37 @@
             <ValueType Type="bool"/>
         </Element>
         <Element Type="FunctionDef" Id="0659D48C">
-            <Identifier>PC_UpdateSoAStates</Identifier>
             <Label Type="Label" Library="Ntve" Id="C5092BE2"/>
             <Internal/>
-            <FlagAction/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="7FC861C5"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="4256C5E2"/>
             <Variable Type="Variable" Library="VoiC" Id="9C3892C0"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="2E827490"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="0A47130D"/>
+        </Element>
+        <Element Type="ParamDef" Id="7FC861C5">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="C4BA5250"/>
+        </Element>
+        <Element Type="Param" Id="C4BA5250">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="4256C5E2">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="E120EC58"/>
+        </Element>
+        <Element Type="Param" Id="E120EC58">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="9C3892C0">
             <Identifier>indexSoAUpgrade</Identifier>
@@ -62388,6 +62462,15 @@
         <Element Type="Param" Id="5CD44708">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Value>false</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0A47130D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="FC3F9102"/>
+        </Element>
+        <Element Type="Param" Id="FC3F9102">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Value>true</Value>
             <ValueType Type="bool"/>
         </Element>
         <Element Type="FunctionDef" Id="73BF4ECC">
@@ -63060,8 +63143,8 @@
                 #AUTOVAR(ai) = 1;
                 while (#AUTOVAR(ai) &lt;= #AUTOVAR(ae)) {
                     #PARAM(indexCategory) = CatalogEntryGet(c_gameCatalogArmyCategory, #AUTOVAR(ai));
-                    #SUBFUNCS(actions)
                     #AUTOVAR(ai) = #AUTOVAR(ai) + 1;
+                    #SUBFUNCS(actions)
                 }
             </ScriptCode>
         </Element>
@@ -65373,8 +65456,12 @@
         <Element Type="FunctionDef" Id="927D818B">
             <Label Type="Label" Library="Ntve" Id="C5092BE2"/>
             <Internal/>
-            <FlagAction/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="289231DE"/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="567AAFB8"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="B1DFF7CC"/>
             <Variable Type="Variable" Library="VoiC" Id="73505492"/>
             <Variable Type="Variable" Library="VoiC" Id="E1563411"/>
             <Variable Type="Variable" Library="VoiC" Id="75544970"/>
@@ -65384,17 +65471,27 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="28EC32EC"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="4E6D0E2C"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="C8E789DF"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="DA86FFF5"/>
         </Element>
-        <Element Type="ParamDef" Id="289231DE">
-            <Identifier>player</Identifier>
+        <Element Type="ParamDef" Id="567AAFB8">
             <ParameterType>
-                <Type Value="int"/>
+                <Type Value="bool"/>
             </ParameterType>
-            <Default Type="Param" Library="VoiC" Id="3CE93DD5"/>
+            <Default Type="Param" Library="VoiC" Id="627DEF39"/>
         </Element>
-        <Element Type="Param" Id="3CE93DD5">
-            <Value>1</Value>
-            <ValueType Type="int"/>
+        <Element Type="Param" Id="627DEF39">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="B1DFF7CC">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="4FAC2D1A"/>
+        </Element>
+        <Element Type="Param" Id="4FAC2D1A">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="73505492">
             <Identifier>indexCategory</Identifier>
@@ -65837,6 +65934,15 @@
         </Element>
         <Element Type="Param" Id="DA5FFD5E">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DA86FFF5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="63CABDBA"/>
+        </Element>
+        <Element Type="Param" Id="63CABDBA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
             <Value>true</Value>
             <ValueType Type="bool"/>
         </Element>
@@ -69272,10 +69378,14 @@
             <ValueContext Value="TechUnit"/>
         </Element>
         <Element Type="FunctionDef" Id="FF084466">
-            <Identifier>PC_UpdateArmyUnitStates</Identifier>
             <Label Type="Label" Library="Ntve" Id="C5092BE2"/>
             <Internal/>
-            <FlagAction/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="873F45D0"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="FB983D20"/>
             <Variable Type="Variable" Library="VoiC" Id="4D1C22AB"/>
             <Variable Type="Variable" Library="VoiC" Id="AC1971DE"/>
             <Variable Type="Variable" Library="VoiC" Id="D9DEC24B"/>
@@ -69291,6 +69401,27 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="FEF42473"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="AAFE6FB0"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="6B214DBC"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="5CED1E9B"/>
+        </Element>
+        <Element Type="ParamDef" Id="873F45D0">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="78E38F37"/>
+        </Element>
+        <Element Type="Param" Id="78E38F37">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="FB983D20">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="1A493EC0"/>
+        </Element>
+        <Element Type="Param" Id="1A493EC0">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="4D1C22AB">
             <Identifier>indexMission</Identifier>
@@ -70056,6 +70187,15 @@
         </Element>
         <Element Type="Param" Id="E74E217F">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="5CED1E9B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="A4A04581"/>
+        </Element>
+        <Element Type="Param" Id="A4A04581">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
             <Value>true</Value>
             <ValueType Type="bool"/>
         </Element>
@@ -73909,13 +74049,39 @@
         <Element Type="FunctionDef" Id="4A685694">
             <Label Type="Label" Library="Ntve" Id="C5092BE2"/>
             <Internal/>
-            <FlagAction/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="DAA1E6D2"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="82318B54"/>
             <Variable Type="Variable" Library="VoiC" Id="94F83FD9"/>
             <Variable Type="Variable" Library="VoiC" Id="B5FB52A2"/>
             <Variable Type="Variable" Library="VoiC" Id="39E7BE4B"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="BF906CEA"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="F4A39DBF"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="0407EAAC"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="BD04C09E"/>
+        </Element>
+        <Element Type="ParamDef" Id="DAA1E6D2">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="9B080DD9"/>
+        </Element>
+        <Element Type="Param" Id="9B080DD9">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="82318B54">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="5720CA64"/>
+        </Element>
+        <Element Type="Param" Id="5720CA64">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="94F83FD9">
             <VariableType>
@@ -74332,6 +74498,15 @@
         <Element Type="Param" Id="59D214B3">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Preset Type="PresetValue" Library="Ntve" Id="91AEAEC5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BD04C09E">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="2417C660"/>
+        </Element>
+        <Element Type="Param" Id="2417C660">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Comment" Id="8B1E1CF5">
             <Comment>
@@ -75676,10 +75851,10 @@
             <Internal/>
             <FlagAction/>
             <Parameter Type="ParamDef" Library="VoiC" Id="48DB715E"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="5E774A7D"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="EE75F707"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="F63C1453"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="B3B37993"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="93E6ADC2"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="A16BFFAD"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="0ED9A704"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="8A573B3D"/>
         </Element>
         <Element Type="ParamDef" Id="48DB715E">
             <Identifier>player</Identifier>
@@ -75692,22 +75867,45 @@
             <Value>1</Value>
             <ValueType Type="int"/>
         </Element>
-        <Element Type="FunctionCall" Id="5E774A7D">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="927D818B"/>
-            <Parameter Type="Param" Library="VoiC" Id="6E07B1F2"/>
+        <Element Type="FunctionCall" Id="93E6ADC2">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="260A3A8C"/>
         </Element>
-        <Element Type="Param" Id="6E07B1F2">
-            <ParameterDef Type="ParamDef" Library="VoiC" Id="289231DE"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="48DB715E"/>
+        <Element Type="Param" Id="260A3A8C">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateArmyCategoryStates</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
-        <Element Type="FunctionCall" Id="EE75F707">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="FF084466"/>
+        <Element Type="FunctionCall" Id="A16BFFAD">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="678894A2"/>
         </Element>
-        <Element Type="FunctionCall" Id="F63C1453">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="4A685694"/>
+        <Element Type="Param" Id="678894A2">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateArmyUnitStates</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
-        <Element Type="FunctionCall" Id="B3B37993">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="0659D48C"/>
+        <Element Type="FunctionCall" Id="0ED9A704">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="5E3499D8"/>
+        </Element>
+        <Element Type="Param" Id="5E3499D8">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdatePerkStates</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8A573B3D">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="16C00358"/>
+        </Element>
+        <Element Type="Param" Id="16C00358">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateSoAStates</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
         <Element Type="FunctionDef" Id="93EFF442">
             <Identifier>PC_ResetTech</Identifier>
@@ -77180,7 +77378,7 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="58574F63"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="4FD05C4B"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="EE2E2816"/>
-            <FunctionCall Type="FunctionCall" Library="VoiC" Id="F94B8088"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="D44DEBBE"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="E62E4192"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="B6A20A91"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="2048B7DD"/>
@@ -77813,13 +78011,15 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
         </Element>
-        <Element Type="FunctionCall" Id="F94B8088">
-            <FunctionDef Type="FunctionDef" Library="VoiC" Id="8170989A"/>
-            <Parameter Type="Param" Library="VoiC" Id="2C11D4C5"/>
+        <Element Type="FunctionCall" Id="D44DEBBE">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="3BF2D448"/>
         </Element>
-        <Element Type="Param" Id="2C11D4C5">
-            <ParameterDef Type="ParamDef" Library="VoiC" Id="C64D3893"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="6360C9A5"/>
+        <Element Type="Param" Id="3BF2D448">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>UpdateWeaponNArmorUpgrades</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
         <Element Type="Comment" Id="E62E4192">
             <Comment>
@@ -78256,11 +78456,15 @@
             <Preset Type="PresetValue" Library="Ntve" Id="C9DCA6C0"/>
         </Element>
         <Element Type="FunctionDef" Id="8170989A">
-            <Identifier>PC_UpdateWeaponArmorUpgrades</Identifier>
+            <Identifier>PC_UpdateWeaponArmorUpgrades_Internal</Identifier>
             <Label Type="Label" Library="Ntve" Id="C5092BE2"/>
             <Internal/>
-            <FlagAction/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="bool"/>
+            </ReturnType>
+            <Parameter Type="ParamDef" Library="VoiC" Id="F20712FF"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="6E44A315"/>
             <Variable Type="Variable" Library="VoiC" Id="5CD7F89B"/>
             <Variable Type="Variable" Library="VoiC" Id="9E983FF6"/>
             <Variable Type="Variable" Library="VoiC" Id="E01E440B"/>
@@ -78322,17 +78526,27 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="D5160D7F"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="C50C9A34"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="70CB261E"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="F28DD17B"/>
         </Element>
-        <Element Type="ParamDef" Id="C64D3893">
-            <Identifier>player</Identifier>
+        <Element Type="ParamDef" Id="F20712FF">
             <ParameterType>
-                <Type Value="int"/>
+                <Type Value="bool"/>
             </ParameterType>
-            <Default Type="Param" Library="VoiC" Id="0710302F"/>
+            <Default Type="Param" Library="VoiC" Id="5E3337B9"/>
         </Element>
-        <Element Type="Param" Id="0710302F">
-            <Value>1</Value>
-            <ValueType Type="int"/>
+        <Element Type="Param" Id="5E3337B9">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="ParamDef" Id="6E44A315">
+            <ParameterType>
+                <Type Value="bool"/>
+            </ParameterType>
+            <Default Type="Param" Library="VoiC" Id="DF9F8549"/>
+        </Element>
+        <Element Type="Param" Id="DF9F8549">
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Variable" Id="5CD7F89B">
             <Identifier>groundWeapon1</Identifier>
@@ -79000,7 +79214,8 @@
         </Element>
         <Element Type="Param" Id="05B736FB">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="2850DB66">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79019,7 +79234,8 @@
         </Element>
         <Element Type="Param" Id="E00A3F96">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="8AC86C32">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79039,7 +79255,8 @@
         </Element>
         <Element Type="Param" Id="9B8DE00D">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="7FE3F573">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79059,7 +79276,8 @@
         </Element>
         <Element Type="Param" Id="FBCB476A">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="3CAFE98E">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79078,7 +79296,8 @@
         </Element>
         <Element Type="Param" Id="98960605">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="A0EDAA6E">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79341,7 +79560,8 @@
         </Element>
         <Element Type="Param" Id="6A72E4AC">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="B2AE990B">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79361,7 +79581,8 @@
         </Element>
         <Element Type="Param" Id="F7A60325">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="966D6B39">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79381,7 +79602,8 @@
         </Element>
         <Element Type="Param" Id="1DA2B804">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="42E1E50A">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79401,7 +79623,8 @@
         </Element>
         <Element Type="Param" Id="EC4C2A17">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="701678EC">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79421,7 +79644,8 @@
         </Element>
         <Element Type="Param" Id="E7577994">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="AB62B72D">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79683,7 +79907,8 @@
         </Element>
         <Element Type="Param" Id="01754811">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="41E39156">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79703,7 +79928,8 @@
         </Element>
         <Element Type="Param" Id="AFA50024">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="77917F43">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79723,7 +79949,8 @@
         </Element>
         <Element Type="Param" Id="1F00E6A9">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="84E738C6">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79743,7 +79970,8 @@
         </Element>
         <Element Type="Param" Id="0075F64D">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="5757BABA">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79763,7 +79991,8 @@
         </Element>
         <Element Type="Param" Id="10E53B41">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-            <Parameter Type="ParamDef" Library="VoiC" Id="C64D3893"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="Param" Id="0B4748F5">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
@@ -79774,6 +80003,15 @@
             <Value>CyberneticsCoreResearch</Value>
             <ValueType Type="abilcmd"/>
             <ValueId Id="5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="F28DD17B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VoiC" Id="27153613"/>
+        </Element>
+        <Element Type="Param" Id="27153613">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="FunctionDef" Id="C3EA599E">
             <Identifier>PC_EnableUpgradeAndAbilityCommandForTech</Identifier>
@@ -82157,6 +82395,8 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="404EF313"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="28FA3636"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="DF217FB9"/>
+            <FunctionCall Type="Comment" Library="VoiC" Id="E0F4D1CD"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="FB9652CF"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="E73D7ADC"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="68BCE94E"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="CB2C5398"/>
@@ -82203,6 +82443,9 @@
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="54745C59"/>
             <FunctionCall Type="Comment" Library="VoiC" Id="98385D26"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="34712587"/>
+            <FunctionCall Type="Comment" Library="VoiC" Id="2F709D7F"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="8680DBF1"/>
+            <FunctionCall Type="Comment" Library="VoiC" Id="1E4F8FAD"/>
             <FunctionCall Type="FunctionCall" Library="VoiC" Id="A59822B7"/>
         </Element>
         <Element Type="ParamDef" Id="B672D85E">
@@ -82392,6 +82635,21 @@
         <Element Type="Param" Id="65E843BF">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
             <Parameter Type="ParamDef" Library="VoiC" Id="B672D85E"/>
+        </Element>
+        <Element Type="Comment" Id="E0F4D1CD">
+            <Comment>
+                Run possible custom runtime
+            </Comment>
+        </Element>
+        <Element Type="FunctionCall" Id="FB9652CF">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="FB71795D"/>
+        </Element>
+        <Element Type="Param" Id="FB71795D">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>MissionInitStart</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
         </Element>
         <Element Type="Comment" Id="E73D7ADC">
             <Comment>
@@ -83896,6 +84154,26 @@
             <Value>PStory01</Value>
             <ValueType Type="gamelink"/>
             <ValueGameType Type="Map"/>
+        </Element>
+        <Element Type="Comment" Id="2F709D7F">
+            <Comment>
+                Run possible custom runtime
+            </Comment>
+        </Element>
+        <Element Type="FunctionCall" Id="8680DBF1">
+            <FunctionDef Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+            <Parameter Type="Param" Library="VoiC" Id="C57151DE"/>
+        </Element>
+        <Element Type="Param" Id="C57151DE">
+            <ParameterDef Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+            <Value>MissionInitStart</Value>
+            <ValueType Type="userinstance"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
+        </Element>
+        <Element Type="Comment" Id="1E4F8FAD">
+            <Comment>
+                Fire &quot;Mission Start&quot; event
+            </Comment>
         </Element>
         <Element Type="FunctionCall" Id="A59822B7">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="9B76E7C9"/>
@@ -101621,6 +101899,7 @@
             <Preset Type="PresetValue" Library="Ntve" Id="BFF08621"/>
         </Element>
         <Element Type="Category" Id="9FEFB8E7">
+            <Item Type="Category" Library="VoiC" Id="30825FE4"/>
             <Item Type="Category" Library="VoiC" Id="311D53E8"/>
             <Item Type="Category" Library="VoiC" Id="51D16AD8"/>
             <Item Type="Category" Library="VoiC" Id="95A2E9D3"/>
@@ -101639,6 +101918,296 @@
             <Item Type="Preset" Library="VoiC" Id="8A315B45"/>
             <Item Type="FunctionDef" Library="VoiC" Id="DFC99709"/>
             <Item Type="FunctionDef" Library="VoiC" Id="F9D6AE4E"/>
+        </Element>
+        <Element Type="Category" Id="30825FE4">
+            <Item Type="FunctionDef" Library="VoiC" Id="8340DAF0"/>
+            <Item Type="CustomScript" Library="VoiC" Id="B6BA9A45"/>
+            <Item Type="FunctionDef" Library="VoiC" Id="7AB8F9A3"/>
+        </Element>
+        <Element Type="FunctionDef" Id="8340DAF0">
+            <Internal/>
+            <FlagAction/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="EFC02792"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="D09474B0"/>
+        </Element>
+        <Element Type="ParamDef" Id="EFC02792">
+            <ParameterType>
+                <Type Value="userinstance"/>
+                <UserType Value="CampaignTriggerConfig"/>
+            </ParameterType>
+        </Element>
+        <Element Type="Variable" Id="5D3CA682">
+            <VariableType>
+                <Type Value="trigger"/>
+            </VariableType>
+            <Value Type="Param" Library="VoiC" Id="D7FD120B"/>
+        </Element>
+        <Element Type="Param" Id="D7FD120B">
+            <Preset Type="PresetValue" Library="Ntve" Id="00000542"/>
+        </Element>
+        <Element Type="Variable" Id="8310EE46">
+            <VariableType>
+                <Type Value="string"/>
+            </VariableType>
+            <Value Type="Param" Library="VoiC" Id="6034AB2A"/>
+        </Element>
+        <Element Type="Param" Id="6034AB2A">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D09474B0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="9DE705AA"/>
+            <Parameter Type="Param" Library="VoiC" Id="C9516966"/>
+            <Parameter Type="Param" Library="VoiC" Id="FADB5195"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="9DB9D621"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="75B97B05"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="70F1B581"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="A578A9FE"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="51B8EC49"/>
+        </Element>
+        <Element Type="Param" Id="C9516966">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E8C2EA0E"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="FADB5195">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="28E710F2"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="D67B483C"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D67B483C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D6D5CB34"/>
+            <Parameter Type="Param" Library="VoiC" Id="74DEB2B4"/>
+            <Parameter Type="Param" Library="VoiC" Id="954A2828"/>
+        </Element>
+        <Element Type="Param" Id="74DEB2B4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BCBE3805"/>
+            <Value>CampaignTriggerConfig</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="954A2828">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D20CD3A5"/>
+            <Value>Trigger</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9DB9D621">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <Parameter Type="Param" Library="VoiC" Id="7D870ED3"/>
+            <Parameter Type="Param" Library="VoiC" Id="9861DC74"/>
+        </Element>
+        <Element Type="Param" Id="7D870ED3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+        </Element>
+        <Element Type="Param" Id="9861DC74">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="8FFEBC7C"/>
+        </Element>
+        <Element Type="FunctionCall" Id="8FFEBC7C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="0F7F44F5"/>
+            <Parameter Type="Param" Library="VoiC" Id="F89C948B"/>
+            <Parameter Type="Param" Library="VoiC" Id="659D19C9"/>
+            <Parameter Type="Param" Library="VoiC" Id="A9CBA424"/>
+            <Parameter Type="Param" Library="VoiC" Id="389C4244"/>
+        </Element>
+        <Element Type="Param" Id="F89C948B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E69E3B54"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="21207055"/>
+        </Element>
+        <Element Type="FunctionCall" Id="21207055">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D02F7ACF"/>
+        </Element>
+        <Element Type="Param" Id="659D19C9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="AB83502F"/>
+            <Value>CampaignTriggerConfig</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="A9CBA424">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F8759050"/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="EFC02792"/>
+        </Element>
+        <Element Type="Param" Id="389C4244">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="619F5CB9"/>
+            <Value>Trigger</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="CampaignTriggerConfig"/>
+        </Element>
+        <Element Type="FunctionCall" Id="75B97B05">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <Parameter Type="Param" Library="VoiC" Id="E0082340"/>
+            <Parameter Type="Param" Library="VoiC" Id="D81119C1"/>
+        </Element>
+        <Element Type="Param" Id="E0082340">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="Param" Id="D81119C1">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="D10D2537"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D10D2537">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C63F5A47"/>
+            <Parameter Type="Param" Library="VoiC" Id="B3D200C8"/>
+        </Element>
+        <Element Type="Param" Id="B3D200C8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="AC021392"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+        </Element>
+        <Element Type="FunctionCall" Id="70F1B581">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="B202DF96"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="5106187B"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="509C1B45"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="3E9ABF86"/>
+        </Element>
+        <Element Type="FunctionCall" Id="B202DF96">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="VoiC" Id="0F93A301"/>
+            <Parameter Type="Param" Library="VoiC" Id="5480278D"/>
+        </Element>
+        <Element Type="Param" Id="0F93A301">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+        </Element>
+        <Element Type="Param" Id="5480278D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="BB1F28AF"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BB1F28AF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000131"/>
+            <Parameter Type="Param" Library="VoiC" Id="085EBEC9"/>
+            <Parameter Type="Param" Library="VoiC" Id="5E4C1FD4"/>
+        </Element>
+        <Element Type="Param" Id="085EBEC9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000212"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+        </Element>
+        <Element Type="Param" Id="5E4C1FD4">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000213"/>
+            <Value>_Func</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="FunctionCall" Id="5106187B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="VoiC" Id="3815BC4A"/>
+            <Parameter Type="Param" Library="VoiC" Id="B172FB65"/>
+        </Element>
+        <Element Type="Param" Id="3815BC4A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="Param" Id="B172FB65">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="911482FD"/>
+        </Element>
+        <Element Type="FunctionCall" Id="911482FD">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C63F5A47"/>
+            <Parameter Type="Param" Library="VoiC" Id="DE245D0A"/>
+        </Element>
+        <Element Type="Param" Id="DE245D0A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="AC021392"/>
+            <Variable Type="Variable" Library="VoiC" Id="8310EE46"/>
+        </Element>
+        <Element Type="FunctionCall" Id="509C1B45">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="806E6068"/>
+            <FunctionCall Type="FunctionCall" Library="VoiC" Id="E64CDB65"/>
+        </Element>
+        <Element Type="FunctionCall" Id="806E6068">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="268BBACB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        </Element>
+        <Element Type="FunctionCall" Id="E64CDB65">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="VoiC" Id="B7338908"/>
+            <Parameter Type="Param" Library="VoiC" Id="AA62733C"/>
+            <Parameter Type="Param" Library="VoiC" Id="822F345F"/>
+        </Element>
+        <Element Type="Param" Id="B7338908">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="Param" Id="AA62733C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="822F345F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000542"/>
+        </Element>
+        <Element Type="FunctionCall" Id="3E9ABF86">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="VoiC" Id="E879A988"/>
+            <Parameter Type="Param" Library="VoiC" Id="F12152AF"/>
+            <Parameter Type="Param" Library="VoiC" Id="A0111376"/>
+        </Element>
+        <Element Type="Param" Id="E879A988">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="Param" Id="F12152AF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="A0111376">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000542"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A578A9FE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <Parameter Type="Param" Library="VoiC" Id="E2E15619"/>
+            <Parameter Type="Param" Library="VoiC" Id="892CCB75"/>
+            <Parameter Type="Param" Library="VoiC" Id="59BB2F8B"/>
+        </Element>
+        <Element Type="Param" Id="E2E15619">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000183"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000066"/>
+        </Element>
+        <Element Type="Param" Id="892CCB75">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000184"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000067"/>
+        </Element>
+        <Element Type="Param" Id="59BB2F8B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000182"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="FunctionCall" Id="51B8EC49">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="F97DA2B8"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <Parameter Type="Param" Library="VoiC" Id="79CCA297"/>
+        </Element>
+        <Element Type="Param" Id="79CCA297">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F9281F08"/>
+            <Variable Type="Variable" Library="VoiC" Id="5D3CA682"/>
+        </Element>
+        <Element Type="CustomScript" Id="B6BA9A45">
+            <ScriptCode>
+                funcref&lt;libVoiC_gf_PC_RunConfigCallback_Internal&gt; libVoiC_gf_PC_RunConfigCallback = libVoiC_gf_PC_RunConfigCallback_Internal;
+            </ScriptCode>
+        </Element>
+        <Element Type="FunctionDef" Id="7AB8F9A3">
+            <Identifier>libVoiC_gf_PC_RunConfigCallback_Internal</Identifier>
+            <FlagAction/>
+            <FlagNative/>
+            <Parameter Type="ParamDef" Library="VoiC" Id="D3DE29D4"/>
+        </Element>
+        <Element Type="ParamDef" Id="D3DE29D4">
+            <ParameterType>
+                <Type Value="userinstance"/>
+                <UserType Value="CampaignTriggerConfig"/>
+            </ParameterType>
         </Element>
         <Element Type="Category" Id="311D53E8">
             <Item Type="Comment" Library="VoiC" Id="1821E5C7"/>
@@ -120096,6 +120665,7 @@
         <Element Type="Category" Id="42663ACB">
             <Item Type="Preset" Library="VCMI" Id="1EDB994F"/>
             <Item Type="FunctionDef" Library="VCMI" Id="A6E54C77"/>
+            <Item Type="FunctionDef" Library="VCMI" Id="D8E42D65"/>
             <Item Type="Variable" Library="VCMI" Id="AA078C5E"/>
             <Item Type="Variable" Library="VCMI" Id="D5680C67"/>
         </Element>
@@ -120115,8 +120685,7 @@
             <Label Type="Label" Library="Ntve" Id="0677E49B"/>
             <FlagEvent/>
             <Parameter Type="ParamDef" Library="VCMI" Id="6EE5580E"/>
-            <FunctionCall Type="FunctionCall" Library="VCMI" Id="BC8BF56A"/>
-            <FunctionCall Type="FunctionCall" Library="VCMI" Id="EE399B4A"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="ADDDEA62"/>
         </Element>
         <Element Type="ParamDef" Id="6EE5580E">
             <ParameterType>
@@ -120128,57 +120697,258 @@
         <Element Type="Param" Id="C205A05A">
             <Preset Type="PresetValue" Library="VCMI" Id="E9F899BD"/>
         </Element>
-        <Element Type="FunctionCall" Id="BC8BF56A">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="F1C17BBA"/>
-            <Parameter Type="Param" Library="VCMI" Id="609F55BC"/>
-            <Parameter Type="Param" Library="VCMI" Id="D842C134"/>
-            <Parameter Type="Param" Library="VCMI" Id="3700A9F9"/>
+        <Element Type="FunctionCall" Id="ADDDEA62">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="1C0D65C0"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="EE399B4A"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="D861116C"/>
         </Element>
-        <Element Type="Param" Id="609F55BC">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="22B82CD9"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="085729C5"/>
+        <Element Type="FunctionCall" Id="1C0D65C0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5870F9D1"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="13BCC653"/>
         </Element>
-        <Element Type="Param" Id="D842C134">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="EACCC6EF"/>
-            <FunctionCall Type="FunctionCall" Library="VCMI" Id="E3C91876"/>
+        <Element Type="FunctionCall" Id="13BCC653">
+            <FunctionDef Type="FunctionDef" Library="B513D0A0" Id="F2744E8A"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="789273B3"/>
+            <Parameter Type="Param" Library="VCMI" Id="A79C2DFC"/>
+            <Parameter Type="Param" Library="VCMI" Id="D48233B8"/>
         </Element>
-        <Element Type="FunctionCall" Id="E3C91876">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="1ABFD783"/>
-            <Parameter Type="Param" Library="VCMI" Id="23F808B4"/>
-            <Parameter Type="Param" Library="VCMI" Id="F2D18500"/>
+        <Element Type="Param" Id="A79C2DFC">
+            <ParameterDef Type="ParamDef" Library="B513D0A0" Id="1A234509"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="2999701E"/>
         </Element>
-        <Element Type="Param" Id="23F808B4">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="12F3942B"/>
-            <Variable Type="Variable" Library="VCMI" Id="AA078C5E"/>
-        </Element>
-        <Element Type="Param" Id="F2D18500">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="3A1A130B"/>
-            <Variable Type="Variable" Library="VCMI" Id="D5680C67"/>
-        </Element>
-        <Element Type="Param" Id="3700A9F9">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="9E6F0FCC"/>
-            <FunctionCall Type="FunctionCall" Library="VCMI" Id="18725CC2"/>
-        </Element>
-        <Element Type="FunctionCall" Id="18725CC2">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="FC63B7AA"/>
-            <Parameter Type="Param" Library="VCMI" Id="14DD0B53"/>
-        </Element>
-        <Element Type="Param" Id="14DD0B53">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="86234016"/>
-            <Parameter Type="ParamDef" Library="VCMI" Id="6EE5580E"/>
+        <Element Type="Param" Id="D48233B8">
+            <ParameterDef Type="ParamDef" Library="B513D0A0" Id="6D12AC6C"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="91AEAEC5"/>
         </Element>
         <Element Type="FunctionCall" Id="EE399B4A">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="5870F9D1"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <FunctionCall Type="FunctionCall" Library="VCMI" Id="889F8381"/>
         </Element>
         <Element Type="FunctionCall" Id="889F8381">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="B1A02C2E"/>
+            <FunctionDef Type="FunctionDef" Library="B513D0A0" Id="68A86C08"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="789273B3"/>
-            <Parameter Type="Param" Library="VCMI" Id="8AB7E556"/>
+            <Parameter Type="Param" Library="VCMI" Id="B7015AAE"/>
+            <Parameter Type="Param" Library="VCMI" Id="D6996B57"/>
         </Element>
-        <Element Type="Param" Id="8AB7E556">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="177B3837"/>
-            <Variable Type="Variable" Library="VCMI" Id="AA078C5E"/>
+        <Element Type="Param" Id="B7015AAE">
+            <ParameterDef Type="ParamDef" Library="B513D0A0" Id="5EE54381"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="2999701E"/>
+        </Element>
+        <Element Type="Param" Id="D6996B57">
+            <ParameterDef Type="ParamDef" Library="B513D0A0" Id="E3573398"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="91AEAEC5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D861116C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="VCMI" Id="B8FC8D4C"/>
+            <Parameter Type="Param" Library="VCMI" Id="5FAEA552"/>
+            <Parameter Type="Param" Library="VCMI" Id="B878E688"/>
+        </Element>
+        <Element Type="Param" Id="B8FC8D4C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Parameter Type="ParamDef" Library="VCMI" Id="6EE5580E"/>
+        </Element>
+        <Element Type="Param" Id="5FAEA552">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="B878E688">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Preset Type="PresetValue" Library="VCMI" Id="E9F899BD"/>
+        </Element>
+        <Element Type="FunctionDef" Id="D8E42D65">
+            <Identifier>SpearofAdunTargetingModeAbility</Identifier>
+            <Label Type="Label" Library="Ntve" Id="0677E49B"/>
+            <FlagCall/>
+            <ReturnType>
+                <Type Value="userinstance"/>
+                <UserType Value="CampaignPerk"/>
+            </ReturnType>
+            <Variable Type="Variable" Library="VCMI" Id="062046EE"/>
+            <Variable Type="Variable" Library="VCMI" Id="D3A1406D"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="3DDCE50D"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="01CA2187"/>
+            <EventResponse Type="FunctionDef" Library="VCMI" Id="A6E54C77"/>
+        </Element>
+        <Element Type="Variable" Id="062046EE">
+            <VariableType>
+                <Type Value="gamelink"/>
+                <GameType Value="Abil"/>
+            </VariableType>
+            <Value Type="Param" Library="VCMI" Id="DA0ADD79"/>
+        </Element>
+        <Element Type="Param" Id="DA0ADD79">
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="E8240302"/>
+        </Element>
+        <Element Type="FunctionCall" Id="E8240302">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D8DCE241"/>
+            <Parameter Type="Param" Library="VCMI" Id="59520865"/>
+            <Parameter Type="Param" Library="VCMI" Id="990421FE"/>
+            <Parameter Type="Param" Library="VCMI" Id="35B21165"/>
+            <Parameter Type="Param" Library="VCMI" Id="65DB17B9"/>
+        </Element>
+        <Element Type="Param" Id="59520865">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="68AA6D6F"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="990421FE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="CDE53498"/>
+            <Value>AMTTopBarExtendedAbilty</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="35B21165">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="94E0250F"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="40A5B9EA"/>
+        </Element>
+        <Element Type="FunctionCall" Id="40A5B9EA">
+            <FunctionDef Type="FunctionDef" Library="B513D0A0" Id="FF77D85F"/>
+        </Element>
+        <Element Type="Param" Id="65DB17B9">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="F91B226F"/>
+            <Value>ActivatingAbility</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="AMTTopBarExtendedAbilty"/>
+        </Element>
+        <Element Type="Variable" Id="D3A1406D">
+            <VariableType>
+                <Type Value="userinstance"/>
+                <UserType Value="CampaignPerk"/>
+            </VariableType>
+        </Element>
+        <Element Type="FunctionCall" Id="3DDCE50D">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D1C15067"/>
+            <Parameter Type="Param" Library="VCMI" Id="1BE538A7"/>
+            <Parameter Type="Param" Library="VCMI" Id="8D929502"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="064CEB32"/>
+        </Element>
+        <Element Type="Param" Id="1BE538A7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1B9CA2EE"/>
+            <Value>CampaignPerk</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="8D929502">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="53929702"/>
+            <Variable Type="Variable" Library="VCMI" Id="D3A1406D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="064CEB32">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="9DE705AA"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="4BF529DC"/>
+            <Parameter Type="Param" Library="VCMI" Id="29719CB2"/>
+            <Parameter Type="Param" Library="VCMI" Id="F447ED1D"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="1481B90B"/>
+        </Element>
+        <Element Type="Param" Id="29719CB2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E8C2EA0E"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="F447ED1D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="28E710F2"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="C0D93490"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C0D93490">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D6D5CB34"/>
+            <Parameter Type="Param" Library="VCMI" Id="B7CCCE45"/>
+            <Parameter Type="Param" Library="VCMI" Id="49C2F171"/>
+        </Element>
+        <Element Type="Param" Id="B7CCCE45">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BCBE3805"/>
+            <Value>CampaignPerk</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="49C2F171">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D20CD3A5"/>
+            <Value>AbilityCommand</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="CampaignPerk"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1481B90B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="7C4B9D16"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="2FEC0059"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="A77944B0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2FEC0059">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="VCMI" Id="3ABB7B1A"/>
+        </Element>
+        <Element Type="Param" Id="3ABB7B1A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Variable Type="Variable" Library="VCMI" Id="D3A1406D"/>
+        </Element>
+        <Element Type="FunctionCall" Id="A77944B0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="VCMI" Id="326EDB84"/>
+            <Parameter Type="Param" Library="VCMI" Id="9EBFDEAE"/>
+            <Parameter Type="Param" Library="VCMI" Id="8994D058"/>
+        </Element>
+        <Element Type="Param" Id="326EDB84">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="VCMI" Id="062046EE"/>
+        </Element>
+        <Element Type="Param" Id="9EBFDEAE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="8994D058">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="C0499D5B"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C0499D5B">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5EE599E7"/>
+            <Parameter Type="Param" Library="VCMI" Id="177044DA"/>
+        </Element>
+        <Element Type="Param" Id="177044DA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="76BF93AF"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="35FB90D7"/>
+        </Element>
+        <Element Type="FunctionCall" Id="35FB90D7">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="220C20A2"/>
+            <Parameter Type="Param" Library="VCMI" Id="CF579457"/>
+            <Parameter Type="Param" Library="VCMI" Id="61B3F786"/>
+            <Parameter Type="Param" Library="VCMI" Id="32935D40"/>
+            <Parameter Type="Param" Library="VCMI" Id="49EC5346"/>
+        </Element>
+        <Element Type="Param" Id="CF579457">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="FED5A08B"/>
+            <FunctionCall Type="FunctionCall" Library="VCMI" Id="9EBECE86"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9EBECE86">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D02F7ACF"/>
+        </Element>
+        <Element Type="Param" Id="61B3F786">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="CEC00979"/>
+            <Value>CampaignPerk</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="User"/>
+        </Element>
+        <Element Type="Param" Id="32935D40">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="B71AE810"/>
+            <Variable Type="Variable" Library="VCMI" Id="D3A1406D"/>
+        </Element>
+        <Element Type="Param" Id="49EC5346">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C2F76A1D"/>
+            <Value>AbilityCommand</Value>
+            <ValueType Type="userfield"/>
+            <ValueContext Value="CampaignPerk"/>
+        </Element>
+        <Element Type="FunctionCall" Id="01CA2187">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
+            <Parameter Type="Param" Library="VCMI" Id="A3F1BCFA"/>
+        </Element>
+        <Element Type="Param" Id="A3F1BCFA">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="91AEAEC5"/>
         </Element>
         <Element Type="Variable" Id="AA078C5E">
             <Internal/>
@@ -120205,7 +120975,6 @@
             <ValueType Type="string"/>
         </Element>
         <Element Type="Category" Id="ED24E324">
-            <Item Type="FunctionDef" Library="VCMI" Id="D8E42D65"/>
             <Item Type="FunctionDef" Library="VCMI" Id="3C5E89FB"/>
             <Item Type="FunctionDef" Library="VCMI" Id="4907A35B"/>
             <Item Type="FunctionDef" Library="VCMI" Id="FF7B6D22"/>
@@ -120244,24 +121013,6 @@
             <Item Type="Variable" Library="VCMI" Id="1173249C"/>
             <Item Type="Variable" Library="VCMI" Id="4529906B"/>
             <Item Type="Variable" Library="VCMI" Id="2F763B40"/>
-        </Element>
-        <Element Type="FunctionDef" Id="D8E42D65">
-            <Identifier>SpearofAdunTargetingModeAbility</Identifier>
-            <Label Type="Label" Library="Ntve" Id="0677E49B"/>
-            <FlagCall/>
-            <ReturnType>
-                <Type Value="userinstance"/>
-                <UserType Value="CampaignPerk"/>
-            </ReturnType>
-            <FunctionCall Type="FunctionCall" Library="VCMI" Id="01CA2187"/>
-        </Element>
-        <Element Type="FunctionCall" Id="01CA2187">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000097"/>
-            <Parameter Type="Param" Library="VCMI" Id="A3F1BCFA"/>
-        </Element>
-        <Element Type="Param" Id="A3F1BCFA">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000488"/>
-            <Variable Type="Variable" Library="VCMI" Id="27072A6E"/>
         </Element>
         <Element Type="FunctionDef" Id="3C5E89FB">
             <Internal/>
@@ -278216,7 +278967,7 @@
             <Value Type="Param" Library="VCUI" Id="615C3B8E"/>
         </Element>
         <Element Type="Param" Id="615C3B8E">
-            <Value>10</Value>
+            <Value>32</Value>
             <ValueType Type="int"/>
         </Element>
         <Element Type="Variable" Id="B9CAE5CA">
